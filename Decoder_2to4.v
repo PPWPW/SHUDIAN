@@ -1,0 +1,38 @@
+module Decoder_2to4(inB, inA, EN, outD, outC, outB, outA);
+    input  inB, inA, EN;
+    output reg outD, outC, outB, outA;
+
+    always @(*) begin
+        if (inB == 1'b0 && inA == 1'b0 && EN == 1'b1) begin
+            outD = 1'b1;
+            outC = 1'b1;
+            outB = 1'b1;
+            outA = 1'b0;
+        end
+        else if (inB == 1'b0 && inA == 1'b1 && EN == 1'b1) begin
+            outD = 1'b1;
+            outC = 1'b1;
+            outB = 1'b0;
+            outA = 1'b1;
+        end
+        else if (inB == 1'b1 && inA == 1'b0 && EN == 1'b1) begin
+            outD = 1'b1;
+            outC = 1'b0;
+            outB = 1'b1;
+            outA = 1'b1;
+        end
+        else if (inB == 1'b1 && inA == 1'b1 && EN == 1'b1) begin
+            outD = 1'b0;
+            outC = 1'b1;
+            outB = 1'b1;
+            outA = 1'b1;
+        end
+        else begin
+            outD = 1'b1;
+            outC = 1'b1;
+            outB = 1'b1;
+            outA = 1'b1;
+        end
+    end
+
+endmodule 

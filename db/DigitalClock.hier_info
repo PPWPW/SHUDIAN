@@ -1,0 +1,19 @@
+|Decoder_2to4
+inB => always0~6.IN0
+inB => always0~4.IN0
+inB => always0~0.IN0
+inB => always0~2.IN0
+inA => always0~6.IN1
+inA => always0~2.IN1
+inA => always0~0.IN1
+inA => always0~4.IN1
+EN => always0~7.IN1
+EN => always0~5.IN0
+EN => always0~3.IN0
+EN => always0~1.IN0
+outD <= outD~2.DB_MAX_OUTPUT_PORT_TYPE
+outC <= outC~1.DB_MAX_OUTPUT_PORT_TYPE
+outB <= outB~0.DB_MAX_OUTPUT_PORT_TYPE
+outA <= always0~1.DB_MAX_OUTPUT_PORT_TYPE
+
+
