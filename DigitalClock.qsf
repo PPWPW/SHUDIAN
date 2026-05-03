@@ -18,7 +18,7 @@
 #
 # Quartus II
 # Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
-# Date created = 10:59:32  April 01, 2026
+# Date created = 03:06:17  May 04, 2026
 #
 # -------------------------------------------------------------------------- #
 #
@@ -38,9 +38,9 @@
 
 set_global_assignment -name FAMILY "Stratix II"
 set_global_assignment -name DEVICE AUTO
-set_global_assignment -name TOP_LEVEL_ENTITY Decoder_2to4
+set_global_assignment -name TOP_LEVEL_ENTITY DigitalClock
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.0 SP2"
-set_global_assignment -name PROJECT_CREATION_TIME_DATE "10:59:32  APRIL 01, 2026"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "03:06:17  MAY 04, 2026"
 set_global_assignment -name LAST_QUARTUS_VERSION "9.0 SP2"
 set_global_assignment -name USE_GENERATED_PHYSICAL_CONSTRAINTS OFF -section_id eda_blast_fpga
 set_global_assignment -name DEVICE_FILTER_SPEED_GRADE FASTEST
@@ -50,3 +50,12 @@ set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name VERILOG_FILE BCD_7.v
+set_global_assignment -name VERILOG_FILE MOD_60.v
+set_global_assignment -name VERILOG_FILE MOD_24.v
+set_global_assignment -name VERILOG_FILE carry_60.v
+set_global_assignment -name VERILOG_FILE alarm_storage.v
+set_global_assignment -name VERILOG_FILE alarm_judge.v
+set_global_assignment -name VERILOG_FILE speaker.v
+set_global_assignment -name VERILOG_FILE depart.v
+set_global_assignment -name VERILOG_FILE DigitalClock.v

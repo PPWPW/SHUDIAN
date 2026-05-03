@@ -1,5 +1,5 @@
 Classic Timing Analyzer report for DigitalClock
-Wed Apr 01 11:43:38 2026
+Mon May 04 03:47:23 2026
 Quartus II Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
 
 
@@ -39,7 +39,7 @@ applicable agreement for further details.
 +------------------------------+-------+---------------+-------------+------+------+------------+----------+--------------+
 ; Type                         ; Slack ; Required Time ; Actual Time ; From ; To   ; From Clock ; To Clock ; Failed Paths ;
 +------------------------------+-------+---------------+-------------+------+------+------------+----------+--------------+
-; Worst-case tpd               ; N/A   ; None          ; 9.198 ns    ; inA  ; outC ; --         ; --       ; 0            ;
+; Worst-case tpd               ; N/A   ; None          ; 9.198 ns    ; EN   ; outC ; --         ; --       ; 0            ;
 ; Total number of failed paths ;       ;               ;             ;      ;      ;            ;          ; 0            ;
 +------------------------------+-------+---------------+-------------+------+------+------------+----------+--------------+
 
@@ -96,18 +96,18 @@ applicable agreement for further details.
 +-------+-------------------+-----------------+------+------+
 ; Slack ; Required P2P Time ; Actual P2P Time ; From ; To   ;
 +-------+-------------------+-----------------+------+------+
-; N/A   ; None              ; 9.198 ns        ; inA  ; outC ;
+; N/A   ; None              ; 9.198 ns        ; EN   ; outC ;
 ; N/A   ; None              ; 9.187 ns        ; inB  ; outC ;
-; N/A   ; None              ; 9.155 ns        ; inA  ; outB ;
+; N/A   ; None              ; 9.155 ns        ; EN   ; outB ;
 ; N/A   ; None              ; 9.141 ns        ; inB  ; outB ;
-; N/A   ; None              ; 9.118 ns        ; EN   ; outC ;
-; N/A   ; None              ; 9.073 ns        ; EN   ; outB ;
-; N/A   ; None              ; 8.683 ns        ; inA  ; outD ;
+; N/A   ; None              ; 9.118 ns        ; inA  ; outC ;
+; N/A   ; None              ; 9.073 ns        ; inA  ; outB ;
+; N/A   ; None              ; 8.683 ns        ; EN   ; outD ;
 ; N/A   ; None              ; 8.671 ns        ; inB  ; outD ;
-; N/A   ; None              ; 8.603 ns        ; EN   ; outD ;
-; N/A   ; None              ; 7.529 ns        ; inA  ; outA ;
+; N/A   ; None              ; 8.603 ns        ; inA  ; outD ;
+; N/A   ; None              ; 7.529 ns        ; EN   ; outA ;
 ; N/A   ; None              ; 7.516 ns        ; inB  ; outA ;
-; N/A   ; None              ; 7.447 ns        ; EN   ; outA ;
+; N/A   ; None              ; 7.447 ns        ; inA  ; outA ;
 +-------+-------------------+-----------------+------+------+
 
 
@@ -117,18 +117,18 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II Classic Timing Analyzer
     Info: Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
-    Info: Processing started: Wed Apr 01 11:43:38 2026
+    Info: Processing started: Mon May 04 03:47:23 2026
 Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off DigitalClock -c DigitalClock --timing_analysis_only
 Info: Parallel compilation is enabled and will use 4 of the 16 processors detected
-Info: Longest tpd from source pin "inA" to destination pin "outC" is 9.198 ns
-    Info: 1: + IC(0.000 ns) + CELL(0.857 ns) = 0.857 ns; Loc. = PIN_AA7; Fanout = 4; PIN Node = 'inA'
-    Info: 2: + IC(3.819 ns) + CELL(0.366 ns) = 5.042 ns; Loc. = LCCOMB_X30_Y3_N16; Fanout = 1; COMB Node = 'always0~9'
+Info: Longest tpd from source pin "EN" to destination pin "outC" is 9.198 ns
+    Info: 1: + IC(0.000 ns) + CELL(0.857 ns) = 0.857 ns; Loc. = PIN_AA7; Fanout = 4; PIN Node = 'EN'
+    Info: 2: + IC(3.819 ns) + CELL(0.366 ns) = 5.042 ns; Loc. = LCCOMB_X30_Y3_N16; Fanout = 1; COMB Node = 'outC~1'
     Info: 3: + IC(2.174 ns) + CELL(1.982 ns) = 9.198 ns; Loc. = PIN_B7; Fanout = 0; PIN Node = 'outC'
     Info: Total cell delay = 3.205 ns ( 34.84 % )
     Info: Total interconnect delay = 5.993 ns ( 65.16 % )
 Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 207 megabytes
-    Info: Processing ended: Wed Apr 01 11:43:38 2026
+    Info: Processing ended: Mon May 04 03:47:23 2026
     Info: Elapsed time: 00:00:00
     Info: Total CPU time (on all processors): 00:00:00
 

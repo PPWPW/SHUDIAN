@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DigitalClock
-Wed Apr 01 11:43:34 2026
+Mon May 04 03:47:18 2026
 Quartus II Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
 
 
@@ -39,7 +39,7 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +-------------------------------+----------------------------------------------+
-; Analysis & Synthesis Status   ; Successful - Wed Apr 01 11:43:34 2026        ;
+; Analysis & Synthesis Status   ; Successful - Mon May 04 03:47:18 2026        ;
 ; Quartus II Version            ; 9.0 Build 235 06/17/2009 SP 2 SJ Web Edition ;
 ; Revision Name                 ; DigitalClock                                 ;
 ; Top-level Entity Name         ; Decoder_2to4                                 ;
@@ -213,10 +213,20 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
-    Info: Processing started: Wed Apr 01 11:43:33 2026
+    Info: Processing started: Mon May 04 03:47:18 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DigitalClock -c DigitalClock
 Info: Found 1 design units, including 1 entities, in source file Decoder_2to4.v
     Info: Found entity 1: Decoder_2to4
+Info: Found 1 design units, including 1 entities, in source file BCD_7.v
+    Info: Found entity 1: BCD_7
+Info: Found 1 design units, including 1 entities, in source file MOD_60.v
+    Info: Found entity 1: MOD_60
+Info: Found 1 design units, including 1 entities, in source file MOD_24.v
+    Info: Found entity 1: MOD_24
+Info: Found 1 design units, including 1 entities, in source file carry_60.v
+    Info: Found entity 1: carry_60
+Info: Found 1 design units, including 1 entities, in source file alarm_storage.v
+    Info: Found entity 1: alarm_storage
 Info: Elaborating entity "Decoder_2to4" for the top level hierarchy
 Info: Implemented 11 device resources after synthesis - the final resource count might be different
     Info: Implemented 3 input pins
@@ -224,8 +234,8 @@ Info: Implemented 11 device resources after synthesis - the final resource count
     Info: Implemented 4 logic cells
 Info: Quartus II Analysis & Synthesis was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 240 megabytes
-    Info: Processing ended: Wed Apr 01 11:43:34 2026
-    Info: Elapsed time: 00:00:01
+    Info: Processing ended: Mon May 04 03:47:18 2026
+    Info: Elapsed time: 00:00:00
     Info: Total CPU time (on all processors): 00:00:00
 
 

@@ -6,7 +6,7 @@ Type           : Worst-case tpd
 Slack          : N/A
 Required Time  : None
 Actual Time    : 9.198 ns
-From           : inA
+From           : EN
 To             : outC
 From Clock     : --
 To Clock       : --
