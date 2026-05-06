@@ -1,13 +1,326 @@
-|Decoder_2to4
-inB => Decoder0.IN0
-inA => Decoder0.IN1
-EN => outA~0.OUTPUTSELECT
-EN => outB~0.OUTPUTSELECT
-EN => outC~0.OUTPUTSELECT
-EN => outD~0.OUTPUTSELECT
-outD <= outD~0.DB_MAX_OUTPUT_PORT_TYPE
-outC <= outC~0.DB_MAX_OUTPUT_PORT_TYPE
-outB <= outB~0.DB_MAX_OUTPUT_PORT_TYPE
-outA <= outA~0.DB_MAX_OUTPUT_PORT_TYPE
+|DigitalClock
+CLK => CLK~0.IN12
+EN_setalarm => comb~4.IN0
+EN_setalarm => comb~3.IN1
+EN_setclock => set_hour.IN1
+EN_setclock => set_min.IN1
+EN_setclock => set_sec.IN1
+settime0A => set_tens[0].IN2
+settime0B => set_tens[1].IN2
+settime0C => set_tens[2].IN2
+settime0D => set_tens[3].IN2
+settime1A => set_ones[0].IN2
+settime1B => set_ones[1].IN2
+settime1C => set_ones[2].IN2
+settime1D => set_ones[3].IN2
+SettimeA => comb~4.IN1
+SettimeA => comb~2.IN0
+SettimeA => Equal2.IN2
+SettimeA => Equal1.IN2
+SettimeA => Equal0.IN2
+SettimeB => Equal2.IN3
+SettimeB => Equal1.IN3
+SettimeB => Equal0.IN3
+Alarm <= jg_out.DB_MAX_OUTPUT_PORT_TYPE
+Hour <= <GND>
+hour_high_A <= H1A.DB_MAX_OUTPUT_PORT_TYPE
+hour_high_B <= H1B.DB_MAX_OUTPUT_PORT_TYPE
+hour_high_C <= H1C.DB_MAX_OUTPUT_PORT_TYPE
+hour_high_D <= H1D.DB_MAX_OUTPUT_PORT_TYPE
+hour_low_A <= H0A.DB_MAX_OUTPUT_PORT_TYPE
+hour_low_B <= H0B.DB_MAX_OUTPUT_PORT_TYPE
+hour_low_C <= H0C.DB_MAX_OUTPUT_PORT_TYPE
+hour_low_D <= H0D.DB_MAX_OUTPUT_PORT_TYPE
+minute_high_A <= M1A.DB_MAX_OUTPUT_PORT_TYPE
+minute_high_B <= M1B.DB_MAX_OUTPUT_PORT_TYPE
+minute_high_C <= M1C.DB_MAX_OUTPUT_PORT_TYPE
+minute_high_D <= M1D.DB_MAX_OUTPUT_PORT_TYPE
+minute_low_A <= M0A.DB_MAX_OUTPUT_PORT_TYPE
+minute_low_B <= M0B.DB_MAX_OUTPUT_PORT_TYPE
+minute_low_C <= M0C.DB_MAX_OUTPUT_PORT_TYPE
+minute_low_D <= M0D.DB_MAX_OUTPUT_PORT_TYPE
+second_high_A <= S1A.DB_MAX_OUTPUT_PORT_TYPE
+second_high_B <= S1B.DB_MAX_OUTPUT_PORT_TYPE
+second_high_C <= S1C.DB_MAX_OUTPUT_PORT_TYPE
+second_high_D <= S1D.DB_MAX_OUTPUT_PORT_TYPE
+second_low_a <= BCD_7:u_seg.a
+second_low_b <= BCD_7:u_seg.b
+second_low_c <= BCD_7:u_seg.c
+second_low_d <= BCD_7:u_seg.d
+second_low_e <= BCD_7:u_seg.e
+second_low_f <= BCD_7:u_seg.f
+second_low_g <= BCD_7:u_seg.g
+speaker <= depart:u_depart.speak_out
+
+
+|DigitalClock|MOD_60:u_sec
+CLK => ten_reg[3].CLK
+CLK => ten_reg[2].CLK
+CLK => ten_reg[1].CLK
+CLK => ten_reg[0].CLK
+CLK => one_reg[3].CLK
+CLK => one_reg[2].CLK
+CLK => one_reg[1].CLK
+CLK => one_reg[0].CLK
+EN => always1~0.IN0
+IN1D => ten_reg~12.DATAB
+IN1C => ten_reg~13.DATAB
+IN1B => ten_reg~14.DATAB
+IN1A => ten_reg~15.DATAB
+IN0D => one_reg~8.DATAB
+IN0C => one_reg~9.DATAB
+IN0B => one_reg~10.DATAB
+IN0A => one_reg~11.DATAB
+OUT1D <= ten_reg[3].DB_MAX_OUTPUT_PORT_TYPE
+OUT1C <= ten_reg[2].DB_MAX_OUTPUT_PORT_TYPE
+OUT1B <= ten_reg[1].DB_MAX_OUTPUT_PORT_TYPE
+OUT1A <= ten_reg[0].DB_MAX_OUTPUT_PORT_TYPE
+OUT0D <= one_reg[3].DB_MAX_OUTPUT_PORT_TYPE
+OUT0C <= one_reg[2].DB_MAX_OUTPUT_PORT_TYPE
+OUT0B <= one_reg[1].DB_MAX_OUTPUT_PORT_TYPE
+OUT0A <= one_reg[0].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DigitalClock|carry_60:u_sec_carry
+CLK => clk_60~reg0.CLK
+IN1D => Equal0.IN8
+IN1C => Equal0.IN9
+IN1B => Equal0.IN10
+IN1A => Equal0.IN11
+IN0D => Equal0.IN12
+IN0C => Equal0.IN13
+IN0B => Equal0.IN14
+IN0A => Equal0.IN15
+clk_60 <= clk_60~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DigitalClock|MOD_60:u_min
+CLK => ten_reg[3].CLK
+CLK => ten_reg[2].CLK
+CLK => ten_reg[1].CLK
+CLK => ten_reg[0].CLK
+CLK => one_reg[3].CLK
+CLK => one_reg[2].CLK
+CLK => one_reg[1].CLK
+CLK => one_reg[0].CLK
+EN => always1~0.IN0
+IN1D => ten_reg~12.DATAB
+IN1C => ten_reg~13.DATAB
+IN1B => ten_reg~14.DATAB
+IN1A => ten_reg~15.DATAB
+IN0D => one_reg~8.DATAB
+IN0C => one_reg~9.DATAB
+IN0B => one_reg~10.DATAB
+IN0A => one_reg~11.DATAB
+OUT1D <= ten_reg[3].DB_MAX_OUTPUT_PORT_TYPE
+OUT1C <= ten_reg[2].DB_MAX_OUTPUT_PORT_TYPE
+OUT1B <= ten_reg[1].DB_MAX_OUTPUT_PORT_TYPE
+OUT1A <= ten_reg[0].DB_MAX_OUTPUT_PORT_TYPE
+OUT0D <= one_reg[3].DB_MAX_OUTPUT_PORT_TYPE
+OUT0C <= one_reg[2].DB_MAX_OUTPUT_PORT_TYPE
+OUT0B <= one_reg[1].DB_MAX_OUTPUT_PORT_TYPE
+OUT0A <= one_reg[0].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DigitalClock|carry_60:u_min_carry
+CLK => clk_60~reg0.CLK
+IN1D => Equal0.IN8
+IN1C => Equal0.IN9
+IN1B => Equal0.IN10
+IN1A => Equal0.IN11
+IN0D => Equal0.IN12
+IN0C => Equal0.IN13
+IN0B => Equal0.IN14
+IN0A => Equal0.IN15
+clk_60 <= clk_60~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DigitalClock|MOD_24:u_hour
+CLK => ten_reg[3].CLK
+CLK => ten_reg[2].CLK
+CLK => ten_reg[1].CLK
+CLK => ten_reg[0].CLK
+CLK => one_reg[3].CLK
+CLK => one_reg[2].CLK
+CLK => one_reg[1].CLK
+CLK => one_reg[0].CLK
+EN => always1~0.IN0
+IN1D => ten_reg~12.DATAB
+IN1C => ten_reg~13.DATAB
+IN1B => ten_reg~14.DATAB
+IN1A => ten_reg~15.DATAB
+IN0D => one_reg~12.DATAB
+IN0C => one_reg~13.DATAB
+IN0B => one_reg~14.DATAB
+IN0A => one_reg~15.DATAB
+OUT1D <= ten_reg[3].DB_MAX_OUTPUT_PORT_TYPE
+OUT1C <= ten_reg[2].DB_MAX_OUTPUT_PORT_TYPE
+OUT1B <= ten_reg[1].DB_MAX_OUTPUT_PORT_TYPE
+OUT1A <= ten_reg[0].DB_MAX_OUTPUT_PORT_TYPE
+OUT0D <= one_reg[3].DB_MAX_OUTPUT_PORT_TYPE
+OUT0C <= one_reg[2].DB_MAX_OUTPUT_PORT_TYPE
+OUT0B <= one_reg[1].DB_MAX_OUTPUT_PORT_TYPE
+OUT0A <= one_reg[0].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DigitalClock|BCD_7:u_seg
+inD => Decoder0.IN0
+inC => Decoder0.IN1
+inB => Decoder0.IN2
+inA => Decoder0.IN3
+EN => always0~0.IN0
+a <= a~0.DB_MAX_OUTPUT_PORT_TYPE
+b <= b~0.DB_MAX_OUTPUT_PORT_TYPE
+c <= c~0.DB_MAX_OUTPUT_PORT_TYPE
+d <= d~0.DB_MAX_OUTPUT_PORT_TYPE
+e <= e~0.DB_MAX_OUTPUT_PORT_TYPE
+f <= f~0.DB_MAX_OUTPUT_PORT_TYPE
+g <= g~0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DigitalClock|alarm_storage:u_alm_min
+CLK => Q1[3].CLK
+CLK => Q1[2].CLK
+CLK => Q1[1].CLK
+CLK => Q1[0].CLK
+CLK => Q0[3].CLK
+CLK => Q0[2].CLK
+CLK => Q0[1].CLK
+CLK => Q0[0].CLK
+CLK1 => OUT1[3]~reg0.CLK
+CLK1 => OUT1[2]~reg0.CLK
+CLK1 => OUT1[1]~reg0.CLK
+CLK1 => OUT1[0]~reg0.CLK
+CLK1 => OUT0[3]~reg0.CLK
+CLK1 => OUT0[2]~reg0.CLK
+CLK1 => OUT0[1]~reg0.CLK
+CLK1 => OUT0[0]~reg0.CLK
+EN => always1~1.IN1
+EN => always0~0.IN0
+EN1 => always1~0.IN0
+EN1 => always0~1.IN1
+IN1D => Q1~4.DATAB
+IN1C => Q1~5.DATAB
+IN1B => Q1~6.DATAB
+IN1A => Q1~7.DATAB
+IN0D => Q0~4.DATAB
+IN0C => Q0~5.DATAB
+IN0B => Q0~6.DATAB
+IN0A => Q0~7.DATAB
+OUT1[0] <= OUT1[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+OUT1[1] <= OUT1[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+OUT1[2] <= OUT1[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+OUT1[3] <= OUT1[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+OUT0[0] <= OUT0[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+OUT0[1] <= OUT0[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+OUT0[2] <= OUT0[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+OUT0[3] <= OUT0[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DigitalClock|alarm_storage:u_alm_hour
+CLK => Q1[3].CLK
+CLK => Q1[2].CLK
+CLK => Q1[1].CLK
+CLK => Q1[0].CLK
+CLK => Q0[3].CLK
+CLK => Q0[2].CLK
+CLK => Q0[1].CLK
+CLK => Q0[0].CLK
+CLK1 => OUT1[3]~reg0.CLK
+CLK1 => OUT1[2]~reg0.CLK
+CLK1 => OUT1[1]~reg0.CLK
+CLK1 => OUT1[0]~reg0.CLK
+CLK1 => OUT0[3]~reg0.CLK
+CLK1 => OUT0[2]~reg0.CLK
+CLK1 => OUT0[1]~reg0.CLK
+CLK1 => OUT0[0]~reg0.CLK
+EN => always1~1.IN1
+EN => always0~0.IN0
+EN1 => always1~0.IN0
+EN1 => always0~1.IN1
+IN1D => Q1~4.DATAB
+IN1C => Q1~5.DATAB
+IN1B => Q1~6.DATAB
+IN1A => Q1~7.DATAB
+IN0D => Q0~4.DATAB
+IN0C => Q0~5.DATAB
+IN0B => Q0~6.DATAB
+IN0A => Q0~7.DATAB
+OUT1[0] <= OUT1[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+OUT1[1] <= OUT1[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+OUT1[2] <= OUT1[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+OUT1[3] <= OUT1[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+OUT0[0] <= OUT0[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+OUT0[1] <= OUT0[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+OUT0[2] <= OUT0[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+OUT0[3] <= OUT0[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DigitalClock|alarm_judge:u_judge
+clk => alarm_en.CLK
+clk => jg_out~reg0.CLK
+EN1 => alarm_en~0.OUTPUTSELECT
+MOA[0] => Equal0.IN3
+MOA[1] => Equal0.IN2
+MOA[2] => Equal0.IN1
+MOA[3] => Equal0.IN0
+MOB[0] => Equal1.IN3
+MOB[1] => Equal1.IN2
+MOB[2] => Equal1.IN1
+MOB[3] => Equal1.IN0
+HOA[0] => Equal2.IN3
+HOA[1] => Equal2.IN2
+HOA[2] => Equal2.IN1
+HOA[3] => Equal2.IN0
+HOB[0] => Equal3.IN3
+HOB[1] => Equal3.IN2
+HOB[2] => Equal3.IN1
+HOB[3] => Equal3.IN0
+M1A[0] => Equal0.IN7
+M1A[1] => Equal0.IN6
+M1A[2] => Equal0.IN5
+M1A[3] => Equal0.IN4
+M1B[0] => Equal1.IN7
+M1B[1] => Equal1.IN6
+M1B[2] => Equal1.IN5
+M1B[3] => Equal1.IN4
+H1A[0] => Equal2.IN7
+H1A[1] => Equal2.IN6
+H1A[2] => Equal2.IN5
+H1A[3] => Equal2.IN4
+H1B[0] => Equal3.IN7
+H1B[1] => Equal3.IN6
+H1B[2] => Equal3.IN5
+H1B[3] => Equal3.IN4
+jg_out <= jg_out~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DigitalClock|speaker:u_spk
+clkin => clk_high_reg.CLK
+clkin => div4_cnt[1].CLK
+clkin => div4_cnt[0].CLK
+clkin => clk_middle_reg.CLK
+clkin => div6_cnt[2].CLK
+clkin => div6_cnt[1].CLK
+clkin => div6_cnt[0].CLK
+clkin => clk_low_reg.CLK
+clk_high <= clk_high_reg.DB_MAX_OUTPUT_PORT_TYPE
+clk_middle <= clk_middle_reg.DB_MAX_OUTPUT_PORT_TYPE
+clk_low <= clk_low_reg.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DigitalClock|depart:u_depart
+jg_in => always0~0.IN0
+clk => div[5].CLK
+clk => div[4].CLK
+clk => div[3].CLK
+clk => div[2].CLK
+clk => div[1].CLK
+clk => div[0].CLK
+clk => speak_out~reg0.CLK
+clk_high => speak_out~2.DATAB
+clk_middle => speak_out~1.DATAB
+clk_low => speak_out~1.DATAA
+speak_out <= speak_out~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 

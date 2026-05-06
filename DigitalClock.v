@@ -1,120 +1,114 @@
 module DigitalClock (
-    input           CLK_1HZ,
-    input           CLK_SCAN,
-    input           CLK_SPK,
-    input           nRST,
-    input           ADJ_MIN,
-    input           ADJ_HOUR,
-    input           ALM_EN,
-    input           ALM_SET_MIN,
-    input           ALM_SET_HOUR,
-    input   [3:0]   ALM_SW1,
-    input   [3:0]   ALM_SW0,
-    output  [6:0]   SEG,
-    output  [5:0]   DIG,
-    output          BUZZER
+    input           CLK,
+    input           EN_setalarm,
+    input           EN_setclock,
+    input           settime0A,
+    input           settime0B,
+    input           settime0C,
+    input           settime0D,
+    input           settime1A,
+    input           settime1B,
+    input           settime1C,
+    input           settime1D,
+    input           SettimeA,
+    input           SettimeB,
+    output          Alarm,
+    output          Hour,
+    output          hour_high_A,
+    output          hour_high_B,
+    output          hour_high_C,
+    output          hour_high_D,
+    output          hour_low_A,
+    output          hour_low_B,
+    output          hour_low_C,
+    output          hour_low_D,
+    output          minute_high_A,
+    output          minute_high_B,
+    output          minute_high_C,
+    output          minute_high_D,
+    output          minute_low_A,
+    output          minute_low_B,
+    output          minute_low_C,
+    output          minute_low_D,
+    output          second_high_A,
+    output          second_high_B,
+    output          second_high_C,
+    output          second_high_D,
+    output          second_low_a,
+    output          second_low_b,
+    output          second_low_c,
+    output          second_low_d,
+    output          second_low_e,
+    output          second_low_f,
+    output          second_low_g,
+    output          speaker
 );
 
 // ============================================================
-// wires: second counter
+// second counter wires
 // ============================================================
 wire    S1D, S1C, S1B, S1A;
 wire    S0D, S0C, S0B, S0A;
 wire    sec_carry;
 
 // ============================================================
-// wires: minute counter
+// minute counter wires
 // ============================================================
 wire    M1D, M1C, M1B, M1A;
 wire    M0D, M0C, M0B, M0A;
 wire    min_carry;
 
 // ============================================================
-// wires: hour counter
+// hour counter wires
 // ============================================================
 wire    H1D, H1C, H1B, H1A;
 wire    H0D, H0C, H0B, H0A;
 
 // ============================================================
-// wires: alarm storage
+// alarm storage wires
 // ============================================================
 wire [3:0] alm_min_1, alm_min_0;
 wire [3:0] alm_hour_1, alm_hour_0;
 
 // ============================================================
-// wires: alarm / speaker
+// alarm / speaker wires
 // ============================================================
 wire jg_out;
 wire spk_high, spk_middle, spk_low;
 
 // ============================================================
-// display scanning
+// time setting
 // ============================================================
-reg  [2:0] scan_cnt;
-reg  [3:0] bcd_mux;
-wire dec_outD, dec_outC, dec_outB, dec_outA;
+wire [3:0] set_tens = {settime0D, settime0C, settime0B, settime0A};
+wire [3:0] set_ones = {settime1D, settime1C, settime1B, settime1A};
 
-always @(posedge CLK_SCAN or negedge nRST) begin
-    if (!nRST)
-        scan_cnt <= 3'd0;
-    else if (scan_cnt == 3'd5)
-        scan_cnt <= 3'd0;
-    else
-        scan_cnt <= scan_cnt + 1'b1;
-end
+wire set_sec  = EN_setclock && {SettimeB, SettimeA} == 2'b00;
+wire set_min  = EN_setclock && {SettimeB, SettimeA} == 2'b01;
+wire set_hour = EN_setclock && {SettimeB, SettimeA} == 2'b10;
 
-always @(*) begin
-    case (scan_cnt)
-        3'd0: bcd_mux = {H1D, H1C, H1B, H1A};
-        3'd1: bcd_mux = {H0D, H0C, H0B, H0A};
-        3'd2: bcd_mux = {M1D, M1C, M1B, M1A};
-        3'd3: bcd_mux = {M0D, M0C, M0B, M0A};
-        3'd4: bcd_mux = {S1D, S1C, S1B, S1A};
-        3'd5: bcd_mux = {S0D, S0C, S0B, S0A};
-        default: bcd_mux = 4'd0;
-    endcase
-end
+wire sec_carry_gated = sec_carry & ~set_sec;
+wire min_carry_gated = min_carry & ~set_min;
 
 // ============================================================
-// reset / time-adjust control
+// alarm setting
 // ============================================================
-reg reset_active;
-reg adj_min_d1, adj_min_d2;
-reg adj_hour_d1, adj_hour_d2;
-
-always @(posedge CLK_1HZ or negedge nRST) begin
-    if (!nRST)
-        reset_active <= 1'b1;
-    else
-        reset_active <= 1'b0;
-end
-
-always @(posedge CLK_1HZ) begin
-    {adj_min_d2, adj_min_d1}   <= {adj_min_d1, ADJ_MIN};
-    {adj_hour_d2, adj_hour_d1} <= {adj_hour_d1, ADJ_HOUR};
-end
-
-wire adj_min_pulse  = adj_min_d1 && ~adj_min_d2;
-wire adj_hour_pulse = adj_hour_d1 && ~adj_hour_d2;
-
-wire sec_en  = ~reset_active;
-wire min_en  = ~reset_active ? (sec_carry  | adj_min_pulse)  : 1'b0;
-wire hour_en = ~reset_active ? (min_carry  | adj_hour_pulse) : 1'b0;
+wire alm_set_min  = EN_setalarm && ~SettimeA;
+wire alm_set_hour = EN_setalarm &&  SettimeA;
 
 // ============================================================
 // second counter: MOD_60
 // ============================================================
 MOD_60 u_sec (
-    .CLK        (CLK_1HZ),
-    .EN         (sec_en),
-    .IN1D       (1'b0),
-    .IN1C       (1'b0),
-    .IN1B       (1'b0),
-    .IN1A       (1'b0),
-    .IN0D       (1'b0),
-    .IN0C       (1'b0),
-    .IN0B       (1'b0),
-    .IN0A       (1'b0),
+    .CLK        (CLK),
+    .EN         (~set_sec),
+    .IN1D       (set_sec ? set_tens[3] : S1D),
+    .IN1C       (set_sec ? set_tens[2] : S1C),
+    .IN1B       (set_sec ? set_tens[1] : S1B),
+    .IN1A       (set_sec ? set_tens[0] : S1A),
+    .IN0D       (set_sec ? set_ones[3] : S0D),
+    .IN0C       (set_sec ? set_ones[2] : S0C),
+    .IN0B       (set_sec ? set_ones[1] : S0B),
+    .IN0A       (set_sec ? set_ones[0] : S0A),
     .OUT1D      (S1D),
     .OUT1C      (S1C),
     .OUT1B      (S1B),
@@ -129,7 +123,7 @@ MOD_60 u_sec (
 // second carry detect
 // ============================================================
 carry_60 u_sec_carry (
-    .CLK        (CLK_1HZ),
+    .CLK        (CLK),
     .IN1D       (S1D),
     .IN1C       (S1C),
     .IN1B       (S1B),
@@ -145,16 +139,16 @@ carry_60 u_sec_carry (
 // minute counter: MOD_60
 // ============================================================
 MOD_60 u_min (
-    .CLK        (CLK_1HZ),
-    .EN         (min_en),
-    .IN1D       (M1D),
-    .IN1C       (M1C),
-    .IN1B       (M1B),
-    .IN1A       (M1A),
-    .IN0D       (M0D),
-    .IN0C       (M0C),
-    .IN0B       (M0B),
-    .IN0A       (M0A),
+    .CLK        (CLK),
+    .EN         (set_min ? 1'b0 : sec_carry_gated),
+    .IN1D       (set_min ? set_tens[3] : M1D),
+    .IN1C       (set_min ? set_tens[2] : M1C),
+    .IN1B       (set_min ? set_tens[1] : M1B),
+    .IN1A       (set_min ? set_tens[0] : M1A),
+    .IN0D       (set_min ? set_ones[3] : M0D),
+    .IN0C       (set_min ? set_ones[2] : M0C),
+    .IN0B       (set_min ? set_ones[1] : M0B),
+    .IN0A       (set_min ? set_ones[0] : M0A),
     .OUT1D      (M1D),
     .OUT1C      (M1C),
     .OUT1B      (M1B),
@@ -169,7 +163,7 @@ MOD_60 u_min (
 // minute carry detect
 // ============================================================
 carry_60 u_min_carry (
-    .CLK        (CLK_1HZ),
+    .CLK        (CLK),
     .IN1D       (M1D),
     .IN1C       (M1C),
     .IN1B       (M1B),
@@ -185,16 +179,16 @@ carry_60 u_min_carry (
 // hour counter: MOD_24
 // ============================================================
 MOD_24 u_hour (
-    .CLK        (CLK_1HZ),
-    .EN         (hour_en),
-    .IN1D       (H1D),
-    .IN1C       (H1C),
-    .IN1B       (H1B),
-    .IN1A       (H1A),
-    .IN0D       (H0D),
-    .IN0C       (H0C),
-    .IN0B       (H0B),
-    .IN0A       (H0A),
+    .CLK        (CLK),
+    .EN         (set_hour ? 1'b0 : min_carry_gated),
+    .IN1D       (set_hour ? set_tens[3] : H1D),
+    .IN1C       (set_hour ? set_tens[2] : H1C),
+    .IN1B       (set_hour ? set_tens[1] : H1B),
+    .IN1A       (set_hour ? set_tens[0] : H1A),
+    .IN0D       (set_hour ? set_ones[3] : H0D),
+    .IN0C       (set_hour ? set_ones[2] : H0C),
+    .IN0B       (set_hour ? set_ones[1] : H0B),
+    .IN0A       (set_hour ? set_ones[0] : H0A),
     .OUT1D      (H1D),
     .OUT1C      (H1C),
     .OUT1B      (H1B),
@@ -206,66 +200,39 @@ MOD_24 u_hour (
 );
 
 // ============================================================
-// BCD to 7-segment
+// BCD to 7-segment for second_low digit
 // ============================================================
 BCD_7 u_seg (
-    .inD        (bcd_mux[3]),
-    .inC        (bcd_mux[2]),
-    .inB        (bcd_mux[1]),
-    .inA        (bcd_mux[0]),
+    .inD        (S0D),
+    .inC        (S0C),
+    .inB        (S0B),
+    .inA        (S0A),
     .EN         (1'b1),
-    .a          (SEG[0]),
-    .b          (SEG[1]),
-    .c          (SEG[2]),
-    .d          (SEG[3]),
-    .e          (SEG[4]),
-    .f          (SEG[5]),
-    .g          (SEG[6])
+    .a          (second_low_a),
+    .b          (second_low_b),
+    .c          (second_low_c),
+    .d          (second_low_d),
+    .e          (second_low_e),
+    .f          (second_low_f),
+    .g          (second_low_g)
 );
-
-// ============================================================
-// digit select: Decoder_2to4 + extra logic for 6 digits
-// ============================================================
-Decoder_2to4 u_dig_dec (
-    .inB        (scan_cnt[1]),
-    .inA        (scan_cnt[0]),
-    .EN         (~scan_cnt[2]),
-    .outD       (dec_outD),
-    .outC       (dec_outC),
-    .outB       (dec_outB),
-    .outA       (dec_outA)
-);
-
-assign DIG[3] = dec_outD;
-assign DIG[2] = dec_outC;
-assign DIG[1] = dec_outB;
-assign DIG[0] = dec_outA;
-assign DIG[4] = (scan_cnt == 3'd4) ? 1'b0 : 1'b1;
-assign DIG[5] = (scan_cnt == 3'd5) ? 1'b0 : 1'b1;
-
-// ============================================================
-// alarm control: EN=0/EN1=1 for store, EN=1/EN1=0 for output
-// ============================================================
-wire alm_set_mode = ALM_SET_MIN | ALM_SET_HOUR;
-wire alm_en       = ~alm_set_mode;
-wire alm_en1      =  alm_set_mode;
 
 // ============================================================
 // alarm storage (minutes)
 // ============================================================
 alarm_storage u_alm_min (
-    .CLK        (ALM_SET_MIN),
-    .CLK1       (CLK_1HZ),
-    .EN         (alm_en),
-    .EN1        (alm_en1),
-    .IN1D       (ALM_SW1[3]),
-    .IN1C       (ALM_SW1[2]),
-    .IN1B       (ALM_SW1[1]),
-    .IN1A       (ALM_SW1[0]),
-    .IN0D       (ALM_SW0[3]),
-    .IN0C       (ALM_SW0[2]),
-    .IN0B       (ALM_SW0[1]),
-    .IN0A       (ALM_SW0[0]),
+    .CLK        (CLK),
+    .CLK1       (CLK),
+    .EN         (~alm_set_min),
+    .EN1        (alm_set_min),
+    .IN1D       (set_tens[3]),
+    .IN1C       (set_tens[2]),
+    .IN1B       (set_tens[1]),
+    .IN1A       (set_tens[0]),
+    .IN0D       (set_ones[3]),
+    .IN0C       (set_ones[2]),
+    .IN0B       (set_ones[1]),
+    .IN0A       (set_ones[0]),
     .OUT1       (alm_min_1),
     .OUT0       (alm_min_0)
 );
@@ -274,18 +241,18 @@ alarm_storage u_alm_min (
 // alarm storage (hours)
 // ============================================================
 alarm_storage u_alm_hour (
-    .CLK        (ALM_SET_HOUR),
-    .CLK1       (CLK_1HZ),
-    .EN         (alm_en),
-    .EN1        (alm_en1),
-    .IN1D       (ALM_SW1[3]),
-    .IN1C       (ALM_SW1[2]),
-    .IN1B       (ALM_SW1[1]),
-    .IN1A       (ALM_SW1[0]),
-    .IN0D       (ALM_SW0[3]),
-    .IN0C       (ALM_SW0[2]),
-    .IN0B       (ALM_SW0[1]),
-    .IN0A       (ALM_SW0[0]),
+    .CLK        (CLK),
+    .CLK1       (CLK),
+    .EN         (~alm_set_hour),
+    .EN1        (alm_set_hour),
+    .IN1D       (set_tens[3]),
+    .IN1C       (set_tens[2]),
+    .IN1B       (set_tens[1]),
+    .IN1A       (set_tens[0]),
+    .IN0D       (set_ones[3]),
+    .IN0C       (set_ones[2]),
+    .IN0B       (set_ones[1]),
+    .IN0A       (set_ones[0]),
     .OUT1       (alm_hour_1),
     .OUT0       (alm_hour_0)
 );
@@ -294,8 +261,8 @@ alarm_storage u_alm_hour (
 // alarm judge
 // ============================================================
 alarm_judge u_judge (
-    .clk        (CLK_1HZ),
-    .EN1        (ALM_EN),
+    .clk        (CLK),
+    .EN1        (1'b1),
     .MOA        ({M1D, M1C, M1B, M1A}),
     .MOB        ({M0D, M0C, M0B, M0A}),
     .HOA        ({H1D, H1C, H1B, H1A}),
@@ -311,7 +278,7 @@ alarm_judge u_judge (
 // speaker
 // ============================================================
 speaker u_spk (
-    .clkin      (CLK_SPK),
+    .clkin      (CLK),
     .clk_high   (spk_high),
     .clk_middle (spk_middle),
     .clk_low    (spk_low)
@@ -322,11 +289,42 @@ speaker u_spk (
 // ============================================================
 depart u_depart (
     .jg_in      (jg_out),
-    .clk        (CLK_SPK),
+    .clk        (CLK),
     .clk_high   (spk_high),
     .clk_middle (spk_middle),
     .clk_low    (spk_low),
-    .speak_out  (BUZZER)
+    .speak_out  (speaker)
 );
+
+// ============================================================
+// output assignments
+// ============================================================
+assign Alarm = jg_out;
+assign Hour  = 1'b0;
+
+assign hour_high_A = H1A;
+assign hour_high_B = H1B;
+assign hour_high_C = H1C;
+assign hour_high_D = H1D;
+
+assign hour_low_A = H0A;
+assign hour_low_B = H0B;
+assign hour_low_C = H0C;
+assign hour_low_D = H0D;
+
+assign minute_high_A = M1A;
+assign minute_high_B = M1B;
+assign minute_high_C = M1C;
+assign minute_high_D = M1D;
+
+assign minute_low_A = M0A;
+assign minute_low_B = M0B;
+assign minute_low_C = M0C;
+assign minute_low_D = M0D;
+
+assign second_high_A = S1A;
+assign second_high_B = S1B;
+assign second_high_C = S1C;
+assign second_high_D = S1D;
 
 endmodule

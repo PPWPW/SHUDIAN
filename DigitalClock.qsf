@@ -36,14 +36,13 @@
 # -------------------------------------------------------------------------- #
 
 
-set_global_assignment -name FAMILY "Stratix II"
-set_global_assignment -name DEVICE AUTO
+set_global_assignment -name FAMILY MAX7000S
+set_global_assignment -name DEVICE "EPM7128SLC84-7"
 set_global_assignment -name TOP_LEVEL_ENTITY DigitalClock
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.0 SP2"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "03:06:17  MAY 04, 2026"
 set_global_assignment -name LAST_QUARTUS_VERSION "9.0 SP2"
 set_global_assignment -name USE_GENERATED_PHYSICAL_CONSTRAINTS OFF -section_id eda_blast_fpga
-set_global_assignment -name DEVICE_FILTER_SPEED_GRADE FASTEST
 set_global_assignment -name VERILOG_FILE Decoder_2to4.v
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
@@ -59,3 +58,53 @@ set_global_assignment -name VERILOG_FILE alarm_judge.v
 set_global_assignment -name VERILOG_FILE speaker.v
 set_global_assignment -name VERILOG_FILE depart.v
 set_global_assignment -name VERILOG_FILE DigitalClock.v
+set_global_assignment -name MISC_FILE "D:/SHUDIAN/DigitalClock.dpf"
+set_global_assignment -name USE_CONFIGURATION_DEVICE ON
+set_global_assignment -name OPTIMIZE_HOLD_TIMING "IO PATHS AND MINIMUM TPD PATHS"
+set_global_assignment -name FITTER_EFFORT "STANDARD FIT"
+set_global_assignment -name MAX7000_DEVICE_IO_STANDARD TTL
+set_location_assignment PIN_58 -to CLK
+set_location_assignment PIN_54 -to EN_setalarm
+set_location_assignment PIN_81 -to EN_setclock
+set_location_assignment PIN_69 -to SettimeA
+set_location_assignment PIN_68 -to SettimeB
+set_location_assignment PIN_20 -to hour_high_A
+set_location_assignment PIN_21 -to hour_high_B
+set_location_assignment PIN_22 -to hour_high_C
+set_location_assignment PIN_24 -to hour_high_D
+set_location_assignment PIN_25 -to hour_low_A
+set_location_assignment PIN_27 -to hour_low_B
+set_location_assignment PIN_28 -to hour_low_C
+set_location_assignment PIN_29 -to hour_low_D
+set_location_assignment PIN_30 -to minute_high_A
+set_location_assignment PIN_31 -to minute_high_B
+set_location_assignment PIN_33 -to minute_high_C
+set_location_assignment PIN_34 -to minute_high_D
+set_location_assignment PIN_35 -to minute_low_A
+set_location_assignment PIN_36 -to minute_low_B
+set_location_assignment PIN_17 -to minute_low_C
+set_location_assignment PIN_18 -to minute_low_D
+set_location_assignment PIN_37 -to second_high_A
+set_location_assignment PIN_39 -to second_high_B
+set_location_assignment PIN_40 -to second_high_C
+set_location_assignment PIN_41 -to second_high_D
+set_location_assignment PIN_44 -to second_low_a
+set_location_assignment PIN_45 -to second_low_b
+set_location_assignment PIN_46 -to second_low_c
+set_location_assignment PIN_48 -to second_low_d
+set_location_assignment PIN_49 -to second_low_e
+set_location_assignment PIN_50 -to second_low_f
+set_location_assignment PIN_51 -to second_low_g
+set_location_assignment PIN_80 -to settime0A
+set_location_assignment PIN_79 -to settime0B
+set_location_assignment PIN_77 -to settime0C
+set_location_assignment PIN_75 -to settime1A
+set_location_assignment PIN_74 -to settime1B
+set_location_assignment PIN_73 -to settime1C
+set_location_assignment PIN_70 -to settime1D
+set_location_assignment PIN_76 -to settime0D
+set_location_assignment PIN_52 -to speaker
+set_location_assignment PIN_62 -to TCK
+set_location_assignment PIN_14 -to TDI
+set_location_assignment PIN_71 -to TDO
+set_location_assignment PIN_23 -to TMS

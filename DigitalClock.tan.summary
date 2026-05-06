@@ -2,14 +2,44 @@
 Timing Analyzer Summary
 --------------------------------------------------------------------------------------
 
-Type           : Worst-case tpd
+Type           : Worst-case tsu
 Slack          : N/A
 Required Time  : None
-Actual Time    : 9.198 ns
-From           : EN
-To             : outC
+Actual Time    : 8.000 ns
+From           : SettimeA
+To             : MOD_24:u_hour|ten_reg[3]
 From Clock     : --
+To Clock       : CLK
+Failed Paths   : 0
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 12.500 ns
+From           : MOD_60:u_sec|one_reg[1]
+To             : second_low_c
+From Clock     : CLK
 To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case th
+Slack          : N/A
+Required Time  : None
+Actual Time    : 2.000 ns
+From           : settime1A
+To             : MOD_24:u_hour|one_reg[0]
+From Clock     : --
+To Clock       : CLK
+Failed Paths   : 0
+
+Type           : Clock Setup: 'CLK'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 76.92 MHz ( period = 13.000 ns )
+From           : MOD_60:u_min|ten_reg[3]
+To             : alarm_judge:u_judge|jg_out
+From Clock     : CLK
+To Clock       : CLK
 Failed Paths   : 0
 
 Type           : Total number of failed paths
