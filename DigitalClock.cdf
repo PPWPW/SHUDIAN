@@ -3,8 +3,8 @@ JedecChain;
 	FileRevision(JESD32A);
 	DefaultMfr(6E);
 
-	P ActionCode(Ign)
-		Device PartName(EPM7128SL84) MfrSpec(OpMask(0) FullPath("D:/SHUDIAN/DigitalClock.pof"));
+	P ActionCode(Cfg)
+		Device PartName(EPM7128SL84) Path("D:/SHUDIAN/") File("DigitalClock.pof") MfrSpec(OpMask(1));
 
 ChainEnd;
 
