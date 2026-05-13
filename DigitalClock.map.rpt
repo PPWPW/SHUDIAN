@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DigitalClock
-Wed May 06 10:52:11 2026
+Wed May 13 09:48:50 2026
 Quartus II Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
 
 
@@ -12,14 +12,14 @@ Quartus II Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
   4. Analysis & Synthesis Source Files Read
   5. Analysis & Synthesis Resource Usage Summary
   6. Analysis & Synthesis Resource Utilization by Entity
-  7. Registers Removed During Synthesis
-  8. Source assignments for depart:u_depart|lpm_counter:div_rtl_0
-  9. Source assignments for MOD_24:u_hour|lpm_add_sub:Add0|addcore:adder
- 10. Source assignments for MOD_24:u_hour|lpm_add_sub:Add0|addcore:adder|addcore:adder[0]
- 11. Parameter Settings for Inferred Entity Instance: depart:u_depart|lpm_counter:div_rtl_0
- 12. Parameter Settings for Inferred Entity Instance: MOD_24:u_hour|lpm_add_sub:Add0
- 13. Port Connectivity Checks: "alarm_judge:u_judge"
- 14. Port Connectivity Checks: "BCD_7:u_seg"
+  7. Source assignments for depart:u_depart|lpm_counter:div_rtl_0
+  8. Source assignments for MOD_24:u_hour|lpm_add_sub:Add0|addcore:adder
+  9. Source assignments for MOD_24:u_hour|lpm_add_sub:Add0|addcore:adder|addcore:adder[0]
+ 10. Parameter Settings for Inferred Entity Instance: depart:u_depart|lpm_counter:div_rtl_0
+ 11. Parameter Settings for Inferred Entity Instance: MOD_24:u_hour|lpm_add_sub:Add0
+ 12. Port Connectivity Checks: "alarm_judge:u_judge"
+ 13. Port Connectivity Checks: "BCD_7:u_seg"
+ 14. Port Connectivity Checks: "Decoder_2to4:u_dec_set"
  15. Analysis & Synthesis Messages
 
 
@@ -46,13 +46,13 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                               ;
 +-----------------------------+----------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Wed May 06 10:52:11 2026        ;
+; Analysis & Synthesis Status ; Successful - Wed May 13 09:48:49 2026        ;
 ; Quartus II Version          ; 9.0 Build 235 06/17/2009 SP 2 SJ Web Edition ;
 ; Revision Name               ; DigitalClock                                 ;
 ; Top-level Entity Name       ; DigitalClock                                 ;
 ; Family                      ; MAX7000S                                     ;
-; Total macrocells            ; 109                                          ;
-; Total pins                  ; 43                                           ;
+; Total macrocells            ; 120                                          ;
+; Total pins                  ; 44                                           ;
 +-----------------------------+----------------------------------------------+
 
 
@@ -117,6 +117,7 @@ applicable agreement for further details.
 +----------------------------------+-----------------+------------------------+---------------------------------------------------------------------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                        ;
 +----------------------------------+-----------------+------------------------+---------------------------------------------------------------------+
+; Decoder_2to4.v                   ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/Decoder_2to4.v                                           ;
 ; BCD_7.v                          ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/BCD_7.v                                                  ;
 ; MOD_60.v                         ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/MOD_60.v                                                 ;
 ; MOD_24.v                         ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/MOD_24.v                                                 ;
@@ -158,48 +159,38 @@ applicable agreement for further details.
 +----------------------+----------------------+
 ; Resource             ; Usage                ;
 +----------------------+----------------------+
-; Logic cells          ; 109                  ;
+; Logic cells          ; 120                  ;
 ; Total registers      ; 73                   ;
-; I/O pins             ; 43                   ;
+; I/O pins             ; 44                   ;
 ; Shareable expanders  ; 33                   ;
-; Parallel expanders   ; 18                   ;
+; Parallel expanders   ; 22                   ;
 ; Maximum fan-out node ; SettimeA             ;
 ; Maximum fan-out      ; 77                   ;
-; Total fan-out        ; 869                  ;
-; Average fan-out      ; 4.70                 ;
+; Total fan-out        ; 1091                 ;
+; Average fan-out      ; 5.54                 ;
 +----------------------+----------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                    ;
-+-------------------------------+------------+------+-----------------------------------------------------+--------------+
-; Compilation Hierarchy Node    ; Macrocells ; Pins ; Full Hierarchy Name                                 ; Library Name ;
-+-------------------------------+------------+------+-----------------------------------------------------+--------------+
-; |DigitalClock                 ; 109        ; 43   ; |DigitalClock                                       ; work         ;
-;    |BCD_7:u_seg|              ; 7          ; 0    ; |DigitalClock|BCD_7:u_seg                           ; work         ;
-;    |MOD_24:u_hour|            ; 16         ; 0    ; |DigitalClock|MOD_24:u_hour                         ; work         ;
-;    |MOD_60:u_min|             ; 11         ; 0    ; |DigitalClock|MOD_60:u_min                          ; work         ;
-;    |MOD_60:u_sec|             ; 14         ; 0    ; |DigitalClock|MOD_60:u_sec                          ; work         ;
-;    |alarm_judge:u_judge|      ; 9          ; 0    ; |DigitalClock|alarm_judge:u_judge                   ; work         ;
-;    |alarm_storage:u_alm_hour| ; 16         ; 0    ; |DigitalClock|alarm_storage:u_alm_hour              ; work         ;
-;    |alarm_storage:u_alm_min|  ; 16         ; 0    ; |DigitalClock|alarm_storage:u_alm_min               ; work         ;
-;    |carry_60:u_min_carry|     ; 1          ; 0    ; |DigitalClock|carry_60:u_min_carry                  ; work         ;
-;    |carry_60:u_sec_carry|     ; 1          ; 0    ; |DigitalClock|carry_60:u_sec_carry                  ; work         ;
-;    |depart:u_depart|          ; 10         ; 0    ; |DigitalClock|depart:u_depart                       ; work         ;
-;       |lpm_counter:div_rtl_0| ; 7          ; 0    ; |DigitalClock|depart:u_depart|lpm_counter:div_rtl_0 ; work         ;
-;    |speaker:u_spk|            ; 7          ; 0    ; |DigitalClock|speaker:u_spk                         ; work         ;
-+-------------------------------+------------+------+-----------------------------------------------------+--------------+
-
-
-+--------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                             ;
-+---------------------------------------+----------------------------------------+
-; Register name                         ; Reason for Removal                     ;
-+---------------------------------------+----------------------------------------+
-; alarm_judge:u_judge|alarm_en          ; Stuck at VCC due to stuck port data_in ;
-; speaker:u_spk|div4_cnt[0]             ; Merged with speaker:u_spk|clk_high_reg ;
-; Total Number of Removed Registers = 2 ;                                        ;
-+---------------------------------------+----------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                           ;
++---------------------------------------+------------+------+------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node            ; Macrocells ; Pins ; Full Hierarchy Name                                                                ; Library Name ;
++---------------------------------------+------------+------+------------------------------------------------------------------------------------+--------------+
+; |DigitalClock                         ; 120        ; 44   ; |DigitalClock                                                                      ; work         ;
+;    |BCD_7:u_seg|                      ; 7          ; 0    ; |DigitalClock|BCD_7:u_seg                                                          ; work         ;
+;    |MOD_24:u_hour|                    ; 22         ; 0    ; |DigitalClock|MOD_24:u_hour                                                        ; work         ;
+;       |lpm_add_sub:Add0|              ; 2          ; 0    ; |DigitalClock|MOD_24:u_hour|lpm_add_sub:Add0                                       ; work         ;
+;          |addcore:adder|              ; 2          ; 0    ; |DigitalClock|MOD_24:u_hour|lpm_add_sub:Add0|addcore:adder                         ; work         ;
+;             |a_csnbuffer:result_node| ; 2          ; 0    ; |DigitalClock|MOD_24:u_hour|lpm_add_sub:Add0|addcore:adder|a_csnbuffer:result_node ; work         ;
+;    |MOD_60:u_min|                     ; 15         ; 0    ; |DigitalClock|MOD_60:u_min                                                         ; work         ;
+;    |MOD_60:u_sec|                     ; 14         ; 0    ; |DigitalClock|MOD_60:u_sec                                                         ; work         ;
+;    |alarm_judge:u_judge|              ; 10         ; 0    ; |DigitalClock|alarm_judge:u_judge                                                  ; work         ;
+;    |alarm_storage:u_alm_hour|         ; 16         ; 0    ; |DigitalClock|alarm_storage:u_alm_hour                                             ; work         ;
+;    |alarm_storage:u_alm_min|          ; 16         ; 0    ; |DigitalClock|alarm_storage:u_alm_min                                              ; work         ;
+;    |depart:u_depart|                  ; 10         ; 0    ; |DigitalClock|depart:u_depart                                                      ; work         ;
+;       |lpm_counter:div_rtl_0|         ; 7          ; 0    ; |DigitalClock|depart:u_depart|lpm_counter:div_rtl_0                                ; work         ;
+;    |speaker:u_spk|                    ; 8          ; 0    ; |DigitalClock|speaker:u_spk                                                        ; work         ;
++---------------------------------------+------------+------+------------------------------------------------------------------------------------+--------------+
 
 
 +--------------------------------------------------------------+
@@ -304,13 +295,22 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------+-------+----------+---------------+
 
 
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Decoder_2to4:u_dec_set"                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; outD ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
-    Info: Processing started: Wed May 06 10:52:10 2026
+    Info: Processing started: Wed May 13 09:48:47 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DigitalClock -c DigitalClock
 Info: Found 1 design units, including 1 entities, in source file Decoder_2to4.v
     Info: Found entity 1: Decoder_2to4
@@ -333,6 +333,7 @@ Info: Found 1 design units, including 1 entities, in source file depart.v
 Info: Found 1 design units, including 1 entities, in source file DigitalClock.v
     Info: Found entity 1: DigitalClock
 Info: Elaborating entity "DigitalClock" for the top level hierarchy
+Info: Elaborating entity "Decoder_2to4" for hierarchy "Decoder_2to4:u_dec_set"
 Info: Elaborating entity "MOD_60" for hierarchy "MOD_60:u_sec"
 Info: Elaborating entity "carry_60" for hierarchy "carry_60:u_sec_carry"
 Info: Elaborating entity "MOD_24" for hierarchy "MOD_24:u_hour"
@@ -368,15 +369,15 @@ Info: Ignored 3 buffer(s)
     Info: Ignored 3 SOFT buffer(s)
 Warning: Output pins are stuck at VCC or GND
     Warning (13410): Pin "Hour" is stuck at GND
-Info: Implemented 185 device resources after synthesis - the final resource count might be different
-    Info: Implemented 13 input pins
+Info: Implemented 197 device resources after synthesis - the final resource count might be different
+    Info: Implemented 14 input pins
     Info: Implemented 30 output pins
-    Info: Implemented 109 macrocells
+    Info: Implemented 120 macrocells
     Info: Implemented 33 shareable expanders
 Info: Quartus II Analysis & Synthesis was successful. 0 errors, 2 warnings
     Info: Peak virtual memory: 242 megabytes
-    Info: Processing ended: Wed May 06 10:52:11 2026
-    Info: Elapsed time: 00:00:01
+    Info: Processing ended: Wed May 13 09:48:50 2026
+    Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:01
 
 

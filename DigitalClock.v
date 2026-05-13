@@ -1,5 +1,6 @@
 module DigitalClock (
-    input           CLK,
+    input           CLK,        // 1Hz clock, pin 58
+    input           CLK_10K,    // 10kHz clock, pin 56 (alarm speaker)
     input           EN_setalarm,
     input           EN_setclock,
     input           settime0A,
@@ -82,9 +83,21 @@ wire spk_high, spk_middle, spk_low;
 wire [3:0] set_tens = {settime0D, settime0C, settime0B, settime0A};
 wire [3:0] set_ones = {settime1D, settime1C, settime1B, settime1A};
 
-wire set_sec  = EN_setclock && {SettimeB, SettimeA} == 2'b00;
-wire set_min  = EN_setclock && {SettimeB, SettimeA} == 2'b01;
-wire set_hour = EN_setclock && {SettimeB, SettimeA} == 2'b10;
+wire dec_outD, dec_outC, dec_outB, dec_outA;
+
+Decoder_2to4 u_dec_set (
+    .inB        (SettimeB),
+    .inA        (SettimeA),
+    .EN         (EN_setclock),
+    .outD       (dec_outD),
+    .outC       (dec_outC),
+    .outB       (dec_outB),
+    .outA       (dec_outA)
+);
+
+wire set_sec  = ~dec_outA;
+wire set_min  = ~dec_outB;
+wire set_hour = ~dec_outC;
 
 wire sec_carry_gated = sec_carry & ~set_sec;
 wire min_carry_gated = min_carry & ~set_min;
@@ -123,7 +136,6 @@ MOD_60 u_sec (
 // second carry detect
 // ============================================================
 carry_60 u_sec_carry (
-    .CLK        (CLK),
     .IN1D       (S1D),
     .IN1C       (S1C),
     .IN1B       (S1B),
@@ -163,7 +175,6 @@ MOD_60 u_min (
 // minute carry detect
 // ============================================================
 carry_60 u_min_carry (
-    .CLK        (CLK),
     .IN1D       (M1D),
     .IN1C       (M1C),
     .IN1B       (M1B),
@@ -278,7 +289,7 @@ alarm_judge u_judge (
 // speaker
 // ============================================================
 speaker u_spk (
-    .clkin      (CLK),
+    .clkin      (CLK_10K),
     .clk_high   (spk_high),
     .clk_middle (spk_middle),
     .clk_low    (spk_low)

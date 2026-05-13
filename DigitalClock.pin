@@ -72,10 +72,10 @@ RESERVED                     : 4         :        :                   :         
 RESERVED                     : 5         :        :                   :         :           :                
 RESERVED                     : 6         :        :                   :         :           :                
 GND                          : 7         : gnd    :                   :         :           :                
-Alarm                        : 8         : output : TTL               :         :           : N              
+RESERVED                     : 8         :        :                   :         :           :                
 RESERVED                     : 9         :        :                   :         :           :                
 RESERVED                     : 10        :        :                   :         :           :                
-RESERVED                     : 11        :        :                   :         :           :                
+Alarm                        : 11        : output : TTL               :         :           : N              
 Hour                         : 12        : output : TTL               :         :           : N              
 VCCIO                        : 13        : power  :                   : 5.0V    :           :                
 TDI                          : 14        : input  : TTL               :         :           : Y              
@@ -120,7 +120,7 @@ speaker                      : 52        : output : TTL               :         
 VCCIO                        : 53        : power  :                   : 5.0V    :           :                
 EN_setalarm                  : 54        : input  : TTL               :         :           : Y              
 RESERVED                     : 55        :        :                   :         :           :                
-RESERVED                     : 56        :        :                   :         :           :                
+CLK_10K                      : 56        : input  : TTL               :         :           : Y              
 RESERVED                     : 57        :        :                   :         :           :                
 CLK                          : 58        : input  : TTL               :         :           : Y              
 GND                          : 59        : gnd    :                   :         :           :                

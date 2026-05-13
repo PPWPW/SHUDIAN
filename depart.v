@@ -7,7 +7,11 @@ module depart (
     output reg speak_out
 );
 
-reg [5:0] div;
+reg [5:0] div = 6'd0;
+
+initial begin
+    speak_out = 1'b0;
+end
 
 always @(posedge clk) begin
     if (jg_in == 1'b0) begin
@@ -20,7 +24,7 @@ always @(posedge clk) begin
             div <= div + 1'b1;
         // div>0 and div<20 (1~19)
         //div>=20 and div<40 (20~39)
-        //else (div=0 »ò 40~59)
+        //else (div=0 ï¿½ï¿½ 40~59)
         if (div > 6'd0 && div < 6'd20)
             speak_out <= clk_high;
         else if (div >= 6'd20 && div < 6'd40)

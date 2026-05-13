@@ -9,8 +9,8 @@ reg clk_high_reg   = 1'b1;
 reg clk_middle_reg = 1'b1;
 reg clk_low_reg    = 1'b1;
 
-reg [1:0] div4_cnt;
-reg [2:0] div6_cnt;
+reg [1:0] div4_cnt = 2'd0;
+reg [2:0] div6_cnt = 3'd0;
 
 assign clk_high   = clk_high_reg;
 assign clk_middle = clk_middle_reg;

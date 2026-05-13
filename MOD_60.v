@@ -7,8 +7,8 @@ module MOD_60 (
     output reg OUT0D, OUT0C, OUT0B, OUT0A
 );
 
-reg [3:0] ten_reg;
-reg [3:0] one_reg;
+reg [3:0] ten_reg = 4'd0;
+reg [3:0] one_reg = 4'd0;
 
 always @(*) begin
     {OUT1D, OUT1C, OUT1B, OUT1A} = ten_reg;

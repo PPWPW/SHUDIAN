@@ -1,10 +1,9 @@
 |DigitalClock
-CLK => CLK~0.IN12
-EN_setalarm => comb~4.IN0
-EN_setalarm => comb~3.IN1
-EN_setclock => set_hour.IN1
-EN_setclock => set_min.IN1
-EN_setclock => set_sec.IN1
+CLK => CLK~0.IN9
+CLK_10K => CLK_10K~0.IN1
+EN_setalarm => comb~2.IN0
+EN_setalarm => comb~1.IN1
+EN_setclock => EN_setclock~0.IN1
 settime0A => set_tens[0].IN2
 settime0B => set_tens[1].IN2
 settime0C => set_tens[2].IN2
@@ -13,14 +12,8 @@ settime1A => set_ones[0].IN2
 settime1B => set_ones[1].IN2
 settime1C => set_ones[2].IN2
 settime1D => set_ones[3].IN2
-SettimeA => comb~4.IN1
-SettimeA => comb~2.IN0
-SettimeA => Equal2.IN2
-SettimeA => Equal1.IN2
-SettimeA => Equal0.IN2
-SettimeB => Equal2.IN3
-SettimeB => Equal1.IN3
-SettimeB => Equal0.IN3
+SettimeA => SettimeA~0.IN1
+SettimeB => SettimeB~0.IN1
 Alarm <= jg_out.DB_MAX_OUTPUT_PORT_TYPE
 Hour <= <GND>
 hour_high_A <= H1A.DB_MAX_OUTPUT_PORT_TYPE
@@ -53,6 +46,16 @@ second_low_g <= BCD_7:u_seg.g
 speaker <= depart:u_depart.speak_out
 
 
+|DigitalClock|Decoder_2to4:u_dec_set
+inB => Decoder0.IN0
+inA => Decoder0.IN1
+EN => always0~0.IN0
+outD <= outD~0.DB_MAX_OUTPUT_PORT_TYPE
+outC <= outC~0.DB_MAX_OUTPUT_PORT_TYPE
+outB <= outB~0.DB_MAX_OUTPUT_PORT_TYPE
+outA <= outA~0.DB_MAX_OUTPUT_PORT_TYPE
+
+
 |DigitalClock|MOD_60:u_sec
 CLK => ten_reg[3].CLK
 CLK => ten_reg[2].CLK
@@ -82,7 +85,6 @@ OUT0A <= one_reg[0].DB_MAX_OUTPUT_PORT_TYPE
 
 
 |DigitalClock|carry_60:u_sec_carry
-CLK => clk_60~reg0.CLK
 IN1D => Equal0.IN8
 IN1C => Equal0.IN9
 IN1B => Equal0.IN10
@@ -91,7 +93,7 @@ IN0D => Equal0.IN12
 IN0C => Equal0.IN13
 IN0B => Equal0.IN14
 IN0A => Equal0.IN15
-clk_60 <= clk_60~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clk_60 <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |DigitalClock|MOD_60:u_min
@@ -123,7 +125,6 @@ OUT0A <= one_reg[0].DB_MAX_OUTPUT_PORT_TYPE
 
 
 |DigitalClock|carry_60:u_min_carry
-CLK => clk_60~reg0.CLK
 IN1D => Equal0.IN8
 IN1C => Equal0.IN9
 IN1B => Equal0.IN10
@@ -132,7 +133,7 @@ IN0D => Equal0.IN12
 IN0C => Equal0.IN13
 IN0B => Equal0.IN14
 IN0A => Equal0.IN15
-clk_60 <= clk_60~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clk_60 <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |DigitalClock|MOD_24:u_hour

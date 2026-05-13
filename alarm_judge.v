@@ -1,11 +1,11 @@
-//       MOA[3:0] - 当前分钟十位 BCD
-//       MOB[3:0] - 当前分钟个位 BCD
-//       HOA[3:0] - 当前小时十位 BCD
-//       HOB[3:0] - 当前小时个位 BCD
-//       M1A[3:0] - 闹钟分钟十位 BCD
-//       M1B[3:0] - 闹钟分钟个位 BCD
-//       H1A[3:0] - 闹钟小时十位 BCD
-//       H1B[3:0] - 闹钟小时个位 BCD
+//       MOA[3:0] - 锟斤拷前锟斤拷锟斤拷十位 BCD
+//       MOB[3:0] - 锟斤拷前锟斤拷锟接革拷位 BCD
+//       HOA[3:0] - 锟斤拷前小时十位 BCD
+//       HOB[3:0] - 锟斤拷前小时锟斤拷位 BCD
+//       M1A[3:0] - 锟斤拷锟接凤拷锟斤拷十位 BCD
+//       M1B[3:0] - 锟斤拷锟接凤拷锟接革拷位 BCD
+//       H1A[3:0] - 锟斤拷锟斤拷小时十位 BCD
+//       H1B[3:0] - 锟斤拷锟斤拷小时锟斤拷位 BCD
 module alarm_judge (
     input       clk,
     input       EN1,
@@ -14,7 +14,11 @@ module alarm_judge (
     output reg  jg_out
 );
 
-reg alarm_en;
+reg alarm_en = 1'b0;
+
+initial begin
+    jg_out = 1'b0;
+end
 
 always @(posedge clk) begin
     if (EN1 == 1'b1)

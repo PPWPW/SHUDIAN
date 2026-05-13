@@ -6,8 +6,13 @@ module alarm_storage (
     output reg [3:0] OUT1,
     output reg [3:0] OUT0
 );
-reg [3:0] Q1;
-reg [3:0] Q0;
+reg [3:0] Q1 = 4'd0;
+reg [3:0] Q0 = 4'd0;
+
+initial begin
+    OUT1 = 4'd0;
+    OUT0 = 4'd0;
+end
 
 always @(posedge CLK) begin
     if (EN == 1'b0 && EN1 == 1'b1) begin
