@@ -15,6 +15,7 @@ module alarm_judge (
 );
 
 reg alarm_en = 1'b0;
+reg [3:0] alarm_cnt = 4'd0;
 
 initial begin
     jg_out = 1'b0;
@@ -27,10 +28,17 @@ end
 
 always @(posedge clk) begin
     if (alarm_en == 1'b1) begin
-        if (MOA == M1A && MOB == M1B && HOA == H1A && HOB == H1B)
-            jg_out <= 1'b1;
-        else
+        if (MOA == M1A && MOB == M1B && HOA == H1A && HOB == H1B) begin
+            if (alarm_cnt < 4'd10) begin
+                jg_out <= 1'b1;
+                alarm_cnt <= alarm_cnt + 1'b1;
+            end else begin
+                jg_out <= 1'b0;
+            end
+        end else begin
             jg_out <= 1'b0;
+            alarm_cnt <= 4'd0;
+        end
     end else begin
         jg_out <= 1'b0;
     end
