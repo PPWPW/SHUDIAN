@@ -1,6 +1,7 @@
 module DigitalClock (
     input           CLK,        // 1Hz clock, pin 58
     input           CLK_10K,    // 10kHz clock, pin 56 (alarm speaker)
+    input           ALARM_SW,   // pin 67, alarm on/off switch
     input           EN_setalarm,
     input           EN_setclock,
     input           settime0A,
@@ -102,6 +103,10 @@ wire set_hour = ~dec_outC;
 wire sec_carry_gated = sec_carry & ~set_sec;
 wire min_carry_gated = min_carry & ~set_min;
 
+wire sec_clk  = set_sec  ? CLK_10K : CLK;
+wire min_clk  = set_min  ? CLK_10K : CLK;
+wire hour_clk = set_hour ? CLK_10K : CLK;
+
 // ============================================================
 // alarm setting
 // ============================================================
@@ -112,7 +117,7 @@ wire alm_set_hour = EN_setalarm &&  SettimeA;
 // second counter: MOD_60
 // ============================================================
 MOD_60 u_sec (
-    .CLK        (CLK),
+    .CLK        (sec_clk),
     .EN         (~set_sec),
     .IN1D       (set_sec ? set_tens[3] : S1D),
     .IN1C       (set_sec ? set_tens[2] : S1C),
@@ -151,7 +156,7 @@ carry_60 u_sec_carry (
 // minute counter: MOD_60
 // ============================================================
 MOD_60 u_min (
-    .CLK        (CLK),
+    .CLK        (min_clk),
     .EN         (set_min ? 1'b0 : sec_carry_gated),
     .IN1D       (set_min ? set_tens[3] : M1D),
     .IN1C       (set_min ? set_tens[2] : M1C),
@@ -190,7 +195,7 @@ carry_60 u_min_carry (
 // hour counter: MOD_24
 // ============================================================
 MOD_24 u_hour (
-    .CLK        (CLK),
+    .CLK        (hour_clk),
     .EN         (set_hour ? 1'b0 : min_carry_gated),
     .IN1D       (set_hour ? set_tens[3] : H1D),
     .IN1C       (set_hour ? set_tens[2] : H1C),
@@ -232,10 +237,8 @@ BCD_7 u_seg (
 // alarm storage (minutes)
 // ============================================================
 alarm_storage u_alm_min (
-    .CLK        (CLK),
-    .CLK1       (CLK),
-    .EN         (~alm_set_min),
-    .EN1        (alm_set_min),
+    .CLK        (CLK_10K),
+    .EN_set     (alm_set_min),
     .IN1D       (set_tens[3]),
     .IN1C       (set_tens[2]),
     .IN1B       (set_tens[1]),
@@ -252,10 +255,8 @@ alarm_storage u_alm_min (
 // alarm storage (hours)
 // ============================================================
 alarm_storage u_alm_hour (
-    .CLK        (CLK),
-    .CLK1       (CLK),
-    .EN         (~alm_set_hour),
-    .EN1        (alm_set_hour),
+    .CLK        (CLK_10K),
+    .EN_set     (alm_set_hour),
     .IN1D       (set_tens[3]),
     .IN1C       (set_tens[2]),
     .IN1B       (set_tens[1]),
@@ -274,6 +275,7 @@ alarm_storage u_alm_hour (
 alarm_judge u_judge (
     .clk        (CLK),
     .EN1        (1'b1),
+    .alarm_sw   (ALARM_SW),
     .MOA        ({M1D, M1C, M1B, M1A}),
     .MOB        ({M0D, M0C, M0B, M0A}),
     .HOA        ({H1D, H1C, H1B, H1A}),
@@ -301,6 +303,7 @@ speaker u_spk (
 depart u_depart (
     .jg_in      (jg_out),
     .clk        (CLK),
+    .clk_fast   (CLK_10K),
     .clk_high   (spk_high),
     .clk_middle (spk_middle),
     .clk_low    (spk_low),

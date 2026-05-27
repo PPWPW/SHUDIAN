@@ -59,12 +59,13 @@ set_global_assignment -name VERILOG_FILE speaker.v
 set_global_assignment -name VERILOG_FILE depart.v
 set_global_assignment -name VERILOG_FILE DigitalClock.v
 set_global_assignment -name MISC_FILE "D:/SHUDIAN/DigitalClock.dpf"
-set_global_assignment -name USE_CONFIGURATION_DEVICE ON
 set_global_assignment -name OPTIMIZE_HOLD_TIMING "IO PATHS AND MINIMUM TPD PATHS"
+set_global_assignment -name USE_CONFIGURATION_DEVICE ON
 set_global_assignment -name FITTER_EFFORT "STANDARD FIT"
 set_global_assignment -name MAX7000_DEVICE_IO_STANDARD TTL
 set_location_assignment PIN_58 -to CLK
 set_location_assignment PIN_56 -to CLK_10K
+set_location_assignment PIN_67 -to ALARM_SW
 set_location_assignment PIN_54 -to EN_setalarm
 set_location_assignment PIN_81 -to EN_setclock
 set_location_assignment PIN_69 -to SettimeA
