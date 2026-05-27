@@ -15,7 +15,6 @@ module DigitalClock (
     input           SettimeA,
     input           SettimeB,
     output          Alarm,
-    output          Hour,
     output          hour_high_A,
     output          hour_high_B,
     output          hour_high_C,
@@ -103,10 +102,6 @@ wire set_hour = ~dec_outC;
 wire sec_carry_gated = sec_carry & ~set_sec;
 wire min_carry_gated = min_carry & ~set_min;
 
-wire sec_clk  = set_sec  ? CLK_10K : CLK;
-wire min_clk  = set_min  ? CLK_10K : CLK;
-wire hour_clk = set_hour ? CLK_10K : CLK;
-
 // ============================================================
 // alarm setting
 // ============================================================
@@ -117,7 +112,7 @@ wire alm_set_hour = EN_setalarm &&  SettimeA;
 // second counter: MOD_60
 // ============================================================
 MOD_60 u_sec (
-    .CLK        (sec_clk),
+    .CLK        (CLK),
     .EN         (~set_sec),
     .IN1D       (set_sec ? set_tens[3] : S1D),
     .IN1C       (set_sec ? set_tens[2] : S1C),
@@ -156,7 +151,7 @@ carry_60 u_sec_carry (
 // minute counter: MOD_60
 // ============================================================
 MOD_60 u_min (
-    .CLK        (min_clk),
+    .CLK        (CLK),
     .EN         (set_min ? 1'b0 : sec_carry_gated),
     .IN1D       (set_min ? set_tens[3] : M1D),
     .IN1C       (set_min ? set_tens[2] : M1C),
@@ -195,7 +190,7 @@ carry_60 u_min_carry (
 // hour counter: MOD_24
 // ============================================================
 MOD_24 u_hour (
-    .CLK        (hour_clk),
+    .CLK        (CLK),
     .EN         (set_hour ? 1'b0 : min_carry_gated),
     .IN1D       (set_hour ? set_tens[3] : H1D),
     .IN1C       (set_hour ? set_tens[2] : H1C),
@@ -314,7 +309,6 @@ depart u_depart (
 // output assignments
 // ============================================================
 assign Alarm = jg_out;
-assign Hour  = 1'b0;
 
 assign hour_high_A = H1A;
 assign hour_high_B = H1B;
