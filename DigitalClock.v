@@ -1,6 +1,7 @@
 module DigitalClock (
     input           CLK,        // 1Hz clock, pin 58
     input           CLK_10K,    // 10kHz clock, pin 56 (alarm speaker)
+    input           MODE_12_24, // pin 65, 0=24h, 1=12h
     input           ALARM_SW,   // pin 67, alarm on/off switch
     input           EN_setalarm,
     input           EN_setclock,
@@ -306,19 +307,36 @@ depart u_depart (
 );
 
 // ============================================================
+// 12h/24h display conversion
+// Internal H is 0-23 BCD. 12h mode converts:
+//   0 → 12, 1-12 → unchanged, 13-23 → subtract 12
+// ============================================================
+wire [3:0] H_ten = {H1D, H1C, H1B, H1A};
+wire [3:0] H_one = {H0D, H0C, H0B, H0A};
+
+wire is_13plus = (H_ten == 4'd2) || ((H_ten == 4'd1) && (H_one >= 4'd3));
+
+wire borrow    = (H_one < 4'd2);
+wire [3:0] sub_ten = H_ten - 4'd1 - {3'd0, borrow};
+wire [3:0] sub_one = borrow ? (H_one + 4'd8) : (H_one - 4'd2);
+
+wire [3:0] h12_ten = is_13plus ? sub_ten : H_ten;
+wire [3:0] h12_one = is_13plus ? sub_one : H_one;
+
+// ============================================================
 // output assignments
 // ============================================================
 assign Alarm = jg_out;
 
-assign hour_high_A = H1A;
-assign hour_high_B = H1B;
-assign hour_high_C = H1C;
-assign hour_high_D = H1D;
+assign hour_high_A = MODE_12_24 ? h12_ten[0] : H1A;
+assign hour_high_B = MODE_12_24 ? h12_ten[1] : H1B;
+assign hour_high_C = MODE_12_24 ? h12_ten[2] : H1C;
+assign hour_high_D = MODE_12_24 ? h12_ten[3] : H1D;
 
-assign hour_low_A = H0A;
-assign hour_low_B = H0B;
-assign hour_low_C = H0C;
-assign hour_low_D = H0D;
+assign hour_low_A = MODE_12_24 ? h12_one[0] : H0A;
+assign hour_low_B = MODE_12_24 ? h12_one[1] : H0B;
+assign hour_low_C = MODE_12_24 ? h12_one[2] : H0C;
+assign hour_low_D = MODE_12_24 ? h12_one[3] : H0D;
 
 assign minute_high_A = M1A;
 assign minute_high_B = M1B;

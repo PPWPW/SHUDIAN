@@ -66,6 +66,7 @@ set_global_assignment -name MAX7000_DEVICE_IO_STANDARD TTL
 set_location_assignment PIN_58 -to CLK
 set_location_assignment PIN_56 -to CLK_10K
 set_location_assignment PIN_67 -to ALARM_SW
+set_location_assignment PIN_65 -to MODE_12_24
 set_location_assignment PIN_54 -to EN_setalarm
 set_location_assignment PIN_81 -to EN_setclock
 set_location_assignment PIN_69 -to SettimeA
