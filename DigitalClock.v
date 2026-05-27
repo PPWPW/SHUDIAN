@@ -100,7 +100,7 @@ wire set_min  = ~dec_outB;
 wire set_hour = ~dec_outC;
 
 wire sec_carry_gated = sec_carry & ~set_sec;
-wire min_carry_gated = min_carry & ~set_min;
+wire min_carry_gated = min_carry & sec_carry & ~set_min;
 
 // ============================================================
 // alarm setting
