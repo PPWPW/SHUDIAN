@@ -76,11 +76,11 @@ RESERVED                     : 8         :        :                   :         
 RESERVED                     : 9         :        :                   :         :           :                
 RESERVED                     : 10        :        :                   :         :           :                
 RESERVED                     : 11        :        :                   :         :           :                
-Alarm                        : 12        : output : TTL               :         :           : N              
+RESERVED                     : 12        :        :                   :         :           :                
 VCCIO                        : 13        : power  :                   : 5.0V    :           :                
 TDI                          : 14        : input  : TTL               :         :           : Y              
 RESERVED                     : 15        :        :                   :         :           :                
-Hour                         : 16        : output : TTL               :         :           : N              
+RESERVED                     : 16        :        :                   :         :           :                
 minute_low_C                 : 17        : output : TTL               :         :           : Y              
 minute_low_D                 : 18        : output : TTL               :         :           : Y              
 GND                          : 19        : gnd    :                   :         :           :                
@@ -119,7 +119,7 @@ second_low_g                 : 51        : output : TTL               :         
 speaker                      : 52        : output : TTL               :         :           : Y              
 VCCIO                        : 53        : power  :                   : 5.0V    :           :                
 EN_setalarm                  : 54        : input  : TTL               :         :           : Y              
-RESERVED                     : 55        :        :                   :         :           :                
+Alarm                        : 55        : output : TTL               :         :           : N              
 CLK_10K                      : 56        : input  : TTL               :         :           : Y              
 RESERVED                     : 57        :        :                   :         :           :                
 CLK                          : 58        : input  : TTL               :         :           : Y              
@@ -127,9 +127,9 @@ GND                          : 59        : gnd    :                   :         
 RESERVED                     : 60        :        :                   :         :           :                
 RESERVED                     : 61        :        :                   :         :           :                
 TCK                          : 62        : input  : TTL               :         :           : Y              
-RESERVED                     : 63        :        :                   :         :           :                
-RESERVED                     : 64        :        :                   :         :           :                
-RESERVED                     : 65        :        :                   :         :           :                
+SW_MODE                      : 63        : input  : TTL               :         :           : Y              
+SW_RUN                       : 64        : input  : TTL               :         :           : Y              
+MODE_12_24                   : 65        : input  : TTL               :         :           : Y              
 VCCIO                        : 66        : power  :                   : 5.0V    :           :                
 ALARM_SW                     : 67        : input  : TTL               :         :           : Y              
 SettimeB                     : 68        : input  : TTL               :         :           : Y              

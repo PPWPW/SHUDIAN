@@ -1,5 +1,8 @@
 <?xml version="1.0" ?>
 <LOG_ROOT>
 	<PROJECT NAME="DigitalClock">
+		<CBX_INST_ENTRY INSTANCE_NAME="|DigitalClock|MOD_24:u_hour|lpm_add_sub:Add0" CBX_FILE_NAME="add_sub_3kh.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DigitalClock|hour_convert:u_hconv|lpm_add_sub:Add0" CBX_FILE_NAME="add_sub_a9h.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DigitalClock|hour_convert:u_hconv|lpm_add_sub:Add1" CBX_FILE_NAME="add_sub_pnh.tdf"/>
 	</PROJECT>
 </LOG_ROOT>

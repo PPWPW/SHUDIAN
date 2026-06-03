@@ -6,8 +6,8 @@ Type           : Worst-case tsu
 Slack          : N/A
 Required Time  : None
 Actual Time    : 8.800 ns
-From           : settime0C
-To             : MOD_60:u_min|ten_reg[2]
+From           : SettimeA
+To             : MOD_24:u_hour|one_reg[3]
 From Clock     : --
 To Clock       : CLK
 Failed Paths   : 0
@@ -15,10 +15,20 @@ Failed Paths   : 0
 Type           : Worst-case tco
 Slack          : N/A
 Required Time  : None
-Actual Time    : 16.500 ns
-From           : depart:u_depart|lpm_counter:div_rtl_0|dffs[2]
-To             : speaker
+Actual Time    : 17.500 ns
+From           : MOD_24:u_hour|ten_reg[3]
+To             : hour_low_B
 From Clock     : CLK
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case tpd
+Slack          : N/A
+Required Time  : None
+Actual Time    : 12.500 ns
+From           : MODE_12_24
+To             : hour_low_B
+From Clock     : --
 To Clock       : --
 Failed Paths   : 0
 
@@ -26,17 +36,17 @@ Type           : Worst-case th
 Slack          : N/A
 Required Time  : None
 Actual Time    : 2.000 ns
-From           : settime1C
-To             : alarm_storage:u_alm_hour|OUT0_r[2]
+From           : SW_MODE
+To             : sw_m1[3]
 From Clock     : --
-To Clock       : CLK_10K
+To Clock       : CLK
 Failed Paths   : 0
 
 Type           : Clock Setup: 'CLK'
 Slack          : N/A
 Required Time  : None
-Actual Time    : 53.19 MHz ( period = 18.800 ns )
-From           : MOD_24:u_hour|one_reg[1]
+Actual Time    : 72.46 MHz ( period = 13.800 ns )
+From           : MOD_24:u_hour|one_reg[3]
 To             : alarm_judge:u_judge|jg_out
 From Clock     : CLK
 To Clock       : CLK
@@ -45,9 +55,9 @@ Failed Paths   : 0
 Type           : Clock Setup: 'CLK_10K'
 Slack          : N/A
 Required Time  : None
-Actual Time    : 125.00 MHz ( period = 8.000 ns )
-From           : speaker:u_spk|cnt[1]
-To             : speaker:u_spk|cnt[1]
+Actual Time    : 113.64 MHz ( period = 8.800 ns )
+From           : speaker:u_spk|clk_low_reg
+To             : depart:u_depart|speak_out_reg
 From Clock     : CLK_10K
 To Clock       : CLK_10K
 Failed Paths   : 0

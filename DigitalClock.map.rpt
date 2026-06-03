@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DigitalClock
-Wed Jun 03 10:30:16 2026
+Wed Jun 03 11:21:50 2026
 Quartus II Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
 
 
@@ -10,7 +10,23 @@ Quartus II Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Analysis & Synthesis Source Files Read
-  5. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Resource Usage Summary
+  6. Analysis & Synthesis Resource Utilization by Entity
+  7. Source assignments for depart:u_depart|lpm_counter:div_rtl_0
+  8. Source assignments for hour_convert:u_hconv|lpm_add_sub:Add0|addcore:adder
+  9. Source assignments for hour_convert:u_hconv|lpm_add_sub:Add0|addcore:adder|addcore:adder[0]
+ 10. Source assignments for hour_convert:u_hconv|lpm_add_sub:Add1|addcore:adder
+ 11. Source assignments for hour_convert:u_hconv|lpm_add_sub:Add1|addcore:adder|addcore:adder[0]
+ 12. Source assignments for MOD_24:u_hour|lpm_add_sub:Add0|addcore:adder
+ 13. Source assignments for MOD_24:u_hour|lpm_add_sub:Add0|addcore:adder|addcore:adder[0]
+ 14. Parameter Settings for Inferred Entity Instance: depart:u_depart|lpm_counter:div_rtl_0
+ 15. Parameter Settings for Inferred Entity Instance: hour_convert:u_hconv|lpm_add_sub:Add0
+ 16. Parameter Settings for Inferred Entity Instance: hour_convert:u_hconv|lpm_add_sub:Add1
+ 17. Parameter Settings for Inferred Entity Instance: MOD_24:u_hour|lpm_add_sub:Add0
+ 18. Port Connectivity Checks: "alarm_judge:u_judge"
+ 19. Port Connectivity Checks: "BCD_7:u_seg"
+ 20. Port Connectivity Checks: "Decoder_2to4:u_dec_set"
+ 21. Analysis & Synthesis Messages
 
 
 
@@ -36,11 +52,13 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                               ;
 +-----------------------------+----------------------------------------------+
-; Analysis & Synthesis Status ; Failed - Wed Jun 03 10:30:16 2026            ;
+; Analysis & Synthesis Status ; Successful - Wed Jun 03 11:21:50 2026        ;
 ; Quartus II Version          ; 9.0 Build 235 06/17/2009 SP 2 SJ Web Edition ;
 ; Revision Name               ; DigitalClock                                 ;
 ; Top-level Entity Name       ; DigitalClock                                 ;
 ; Family                      ; MAX7000S                                     ;
+; Total macrocells            ; 121                                          ;
+; Total pins                  ; 47                                           ;
 +-----------------------------+----------------------------------------------+
 
 
@@ -100,11 +118,290 @@ applicable agreement for further details.
 +--------------------------------------------------------------+----------------+---------------+
 
 
-+-----------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                        ;
-+----------------------------------+-----------------+-----------+------------------------------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type ; File Name with Absolute Path ;
-+----------------------------------+-----------------+-----------+------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                            ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                        ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------+
+; Decoder_2to4.v                   ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/Decoder_2to4.v                                           ;
+; BCD_7.v                          ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/BCD_7.v                                                  ;
+; MOD_60.v                         ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/MOD_60.v                                                 ;
+; MOD_24.v                         ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/MOD_24.v                                                 ;
+; carry_60.v                       ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/carry_60.v                                               ;
+; alarm_storage.v                  ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/alarm_storage.v                                          ;
+; alarm_judge.v                    ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/alarm_judge.v                                            ;
+; speaker.v                        ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/speaker.v                                                ;
+; hour_convert.v                   ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/hour_convert.v                                           ;
+; depart.v                         ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/depart.v                                                 ;
+; DigitalClock.v                   ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/DigitalClock.v                                           ;
+; lpm_counter.tdf                  ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/lpm_counter.tdf         ;
+; lpm_constant.inc                 ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/lpm_constant.inc        ;
+; lpm_decode.inc                   ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/lpm_decode.inc          ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/lpm_add_sub.inc         ;
+; cmpconst.inc                     ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/cmpconst.inc            ;
+; lpm_compare.inc                  ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/lpm_compare.inc         ;
+; lpm_counter.inc                  ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/lpm_counter.inc         ;
+; dffeea.inc                       ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/dffeea.inc              ;
+; alt_synch_counter.inc            ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/alt_synch_counter.inc   ;
+; alt_synch_counter_f.inc          ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/alt_synch_counter_f.inc ;
+; alt_counter_f10ke.inc            ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/alt_counter_f10ke.inc   ;
+; alt_counter_stratix.inc          ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/alt_counter_stratix.inc ;
+; aglobal90.inc                    ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/aglobal90.inc           ;
+; lpm_add_sub.tdf                  ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/lpm_add_sub.tdf         ;
+; addcore.inc                      ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/addcore.inc             ;
+; look_add.inc                     ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/look_add.inc            ;
+; bypassff.inc                     ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/bypassff.inc            ;
+; altshift.inc                     ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/altshift.inc            ;
+; alt_stratix_add_sub.inc          ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/alt_stratix_add_sub.inc ;
+; alt_mercury_add_sub.inc          ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/alt_mercury_add_sub.inc ;
+; addcore.tdf                      ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/addcore.tdf             ;
+; a_csnbuffer.inc                  ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/a_csnbuffer.inc         ;
+; a_csnbuffer.tdf                  ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/a_csnbuffer.tdf         ;
+; altshift.tdf                     ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/altshift.tdf            ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------+
+
+
++---------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary ;
++----------------------+----------------------+
+; Resource             ; Usage                ;
++----------------------+----------------------+
+; Logic cells          ; 121                  ;
+; Total registers      ; 71                   ;
+; I/O pins             ; 47                   ;
+; Shareable expanders  ; 30                   ;
+; Parallel expanders   ; 14                   ;
+; Maximum fan-out node ; SW_MODE              ;
+; Maximum fan-out      ; 51                   ;
+; Total fan-out        ; 1170                 ;
+; Average fan-out      ; 5.91                 ;
++----------------------+----------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                             ;
++--------------------------------+------------+------+-----------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node     ; Macrocells ; Pins ; Full Hierarchy Name                                                         ; Library Name ;
++--------------------------------+------------+------+-----------------------------------------------------------------------------+--------------+
+; |DigitalClock                  ; 121        ; 47   ; |DigitalClock                                                               ; work         ;
+;    |BCD_7:u_seg|               ; 11         ; 0    ; |DigitalClock|BCD_7:u_seg                                                   ; work         ;
+;    |MOD_24:u_hour|             ; 12         ; 0    ; |DigitalClock|MOD_24:u_hour                                                 ; work         ;
+;       |lpm_add_sub:Add0|       ; 1          ; 0    ; |DigitalClock|MOD_24:u_hour|lpm_add_sub:Add0                                ; work         ;
+;          |addcore:adder|       ; 1          ; 0    ; |DigitalClock|MOD_24:u_hour|lpm_add_sub:Add0|addcore:adder                  ; work         ;
+;             |addcore:adder[0]| ; 1          ; 0    ; |DigitalClock|MOD_24:u_hour|lpm_add_sub:Add0|addcore:adder|addcore:adder[0] ; work         ;
+;    |MOD_60:u_min|              ; 12         ; 0    ; |DigitalClock|MOD_60:u_min                                                  ; work         ;
+;    |MOD_60:u_sec|              ; 8          ; 0    ; |DigitalClock|MOD_60:u_sec                                                  ; work         ;
+;    |alarm_judge:u_judge|       ; 10         ; 0    ; |DigitalClock|alarm_judge:u_judge                                           ; work         ;
+;    |alarm_storage:u_alm_hour|  ; 8          ; 0    ; |DigitalClock|alarm_storage:u_alm_hour                                      ; work         ;
+;    |alarm_storage:u_alm_min|   ; 8          ; 0    ; |DigitalClock|alarm_storage:u_alm_min                                       ; work         ;
+;    |depart:u_depart|           ; 8          ; 0    ; |DigitalClock|depart:u_depart                                               ; work         ;
+;       |lpm_counter:div_rtl_0|  ; 6          ; 0    ; |DigitalClock|depart:u_depart|lpm_counter:div_rtl_0                         ; work         ;
+;    |hour_convert:u_hconv|      ; 1          ; 0    ; |DigitalClock|hour_convert:u_hconv                                          ; work         ;
+;    |speaker:u_spk|             ; 6          ; 0    ; |DigitalClock|speaker:u_spk                                                 ; work         ;
++--------------------------------+------------+------+-----------------------------------------------------------------------------+--------------+
+
+
++--------------------------------------------------------------+
+; Source assignments for depart:u_depart|lpm_counter:div_rtl_0 ;
++---------------------------+-------+------+-------------------+
+; Assignment                ; Value ; From ; To                ;
++---------------------------+-------+------+-------------------+
+; SUPPRESS_DA_RULE_INTERNAL ; a101  ; -    ; -                 ;
+; SUPPRESS_DA_RULE_INTERNAL ; s102  ; -    ; -                 ;
+; SUPPRESS_DA_RULE_INTERNAL ; s103  ; -    ; -                 ;
++---------------------------+-------+------+-------------------+
+
+
++----------------------------------------------------------------------------+
+; Source assignments for hour_convert:u_hconv|lpm_add_sub:Add0|addcore:adder ;
++---------------------------+-------+------+---------------------------------+
+; Assignment                ; Value ; From ; To                              ;
++---------------------------+-------+------+---------------------------------+
+; SUPPRESS_DA_RULE_INTERNAL ; A103  ; -    ; -                               ;
++---------------------------+-------+------+---------------------------------+
+
+
++---------------------------------------------------------------------------------------------+
+; Source assignments for hour_convert:u_hconv|lpm_add_sub:Add0|addcore:adder|addcore:adder[0] ;
++---------------------------+-------+------+--------------------------------------------------+
+; Assignment                ; Value ; From ; To                                               ;
++---------------------------+-------+------+--------------------------------------------------+
+; SUPPRESS_DA_RULE_INTERNAL ; A103  ; -    ; -                                                ;
++---------------------------+-------+------+--------------------------------------------------+
+
+
++----------------------------------------------------------------------------+
+; Source assignments for hour_convert:u_hconv|lpm_add_sub:Add1|addcore:adder ;
++---------------------------+-------+------+---------------------------------+
+; Assignment                ; Value ; From ; To                              ;
++---------------------------+-------+------+---------------------------------+
+; SUPPRESS_DA_RULE_INTERNAL ; A103  ; -    ; -                               ;
++---------------------------+-------+------+---------------------------------+
+
+
++---------------------------------------------------------------------------------------------+
+; Source assignments for hour_convert:u_hconv|lpm_add_sub:Add1|addcore:adder|addcore:adder[0] ;
++---------------------------+-------+------+--------------------------------------------------+
+; Assignment                ; Value ; From ; To                                               ;
++---------------------------+-------+------+--------------------------------------------------+
+; SUPPRESS_DA_RULE_INTERNAL ; A103  ; -    ; -                                                ;
++---------------------------+-------+------+--------------------------------------------------+
+
+
++---------------------------------------------------------------------+
+; Source assignments for MOD_24:u_hour|lpm_add_sub:Add0|addcore:adder ;
++---------------------------+-------+------+--------------------------+
+; Assignment                ; Value ; From ; To                       ;
++---------------------------+-------+------+--------------------------+
+; SUPPRESS_DA_RULE_INTERNAL ; A103  ; -    ; -                        ;
++---------------------------+-------+------+--------------------------+
+
+
++--------------------------------------------------------------------------------------+
+; Source assignments for MOD_24:u_hour|lpm_add_sub:Add0|addcore:adder|addcore:adder[0] ;
++---------------------------+-------+------+-------------------------------------------+
+; Assignment                ; Value ; From ; To                                        ;
++---------------------------+-------+------+-------------------------------------------+
+; SUPPRESS_DA_RULE_INTERNAL ; A103  ; -    ; -                                         ;
++---------------------------+-------+------+-------------------------------------------+
+
+
++----------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: depart:u_depart|lpm_counter:div_rtl_0 ;
++------------------------+-------------------+-------------------------------------------+
+; Parameter Name         ; Value             ; Type                                      ;
++------------------------+-------------------+-------------------------------------------+
+; AUTO_CARRY_CHAINS      ; ON                ; AUTO_CARRY                                ;
+; IGNORE_CARRY_BUFFERS   ; OFF               ; IGNORE_CARRY                              ;
+; AUTO_CASCADE_CHAINS    ; ON                ; AUTO_CASCADE                              ;
+; IGNORE_CASCADE_BUFFERS ; OFF               ; IGNORE_CASCADE                            ;
+; LPM_WIDTH              ; 6                 ; Untyped                                   ;
+; LPM_DIRECTION          ; UP                ; Untyped                                   ;
+; LPM_MODULUS            ; 0                 ; Untyped                                   ;
+; LPM_AVALUE             ; UNUSED            ; Untyped                                   ;
+; LPM_SVALUE             ; UNUSED            ; Untyped                                   ;
+; LPM_PORT_UPDOWN        ; PORT_CONNECTIVITY ; Untyped                                   ;
+; DEVICE_FAMILY          ; MAX7000S          ; Untyped                                   ;
+; CARRY_CHAIN            ; MANUAL            ; Untyped                                   ;
+; CARRY_CHAIN_LENGTH     ; 48                ; CARRY_CHAIN_LENGTH                        ;
+; NOT_GATE_PUSH_BACK     ; ON                ; NOT_GATE_PUSH_BACK                        ;
+; CARRY_CNT_EN           ; SMART             ; Untyped                                   ;
+; LABWIDE_SCLR           ; ON                ; Untyped                                   ;
+; USE_NEW_VERSION        ; TRUE              ; Untyped                                   ;
+; CBXI_PARAMETER         ; NOTHING           ; Untyped                                   ;
++------------------------+-------------------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: hour_convert:u_hconv|lpm_add_sub:Add0 ;
++------------------------+-------------+-------------------------------------------------+
+; Parameter Name         ; Value       ; Type                                            ;
++------------------------+-------------+-------------------------------------------------+
+; LPM_WIDTH              ; 5           ; Untyped                                         ;
+; LPM_REPRESENTATION     ; UNSIGNED    ; Untyped                                         ;
+; LPM_DIRECTION          ; ADD         ; Untyped                                         ;
+; ONE_INPUT_IS_CONSTANT  ; NO          ; Untyped                                         ;
+; LPM_PIPELINE           ; 0           ; Untyped                                         ;
+; MAXIMIZE_SPEED         ; 5           ; Untyped                                         ;
+; REGISTERED_AT_END      ; 0           ; Untyped                                         ;
+; OPTIMIZE_FOR_SPEED     ; 9           ; Untyped                                         ;
+; USE_CS_BUFFERS         ; 1           ; Untyped                                         ;
+; CARRY_CHAIN            ; MANUAL      ; Untyped                                         ;
+; CARRY_CHAIN_LENGTH     ; 48          ; CARRY_CHAIN_LENGTH                              ;
+; DEVICE_FAMILY          ; MAX7000S    ; Untyped                                         ;
+; USE_WYS                ; OFF         ; Untyped                                         ;
+; STYLE                  ; FAST        ; Untyped                                         ;
+; CBXI_PARAMETER         ; add_sub_a9h ; Untyped                                         ;
+; AUTO_CARRY_CHAINS      ; ON          ; AUTO_CARRY                                      ;
+; IGNORE_CARRY_BUFFERS   ; OFF         ; IGNORE_CARRY                                    ;
+; AUTO_CASCADE_CHAINS    ; ON          ; AUTO_CASCADE                                    ;
+; IGNORE_CASCADE_BUFFERS ; OFF         ; IGNORE_CASCADE                                  ;
++------------------------+-------------+-------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: hour_convert:u_hconv|lpm_add_sub:Add1 ;
++------------------------+-------------+-------------------------------------------------+
+; Parameter Name         ; Value       ; Type                                            ;
++------------------------+-------------+-------------------------------------------------+
+; LPM_WIDTH              ; 6           ; Untyped                                         ;
+; LPM_REPRESENTATION     ; UNSIGNED    ; Untyped                                         ;
+; LPM_DIRECTION          ; ADD         ; Untyped                                         ;
+; ONE_INPUT_IS_CONSTANT  ; YES         ; Untyped                                         ;
+; LPM_PIPELINE           ; 0           ; Untyped                                         ;
+; MAXIMIZE_SPEED         ; 5           ; Untyped                                         ;
+; REGISTERED_AT_END      ; 0           ; Untyped                                         ;
+; OPTIMIZE_FOR_SPEED     ; 9           ; Untyped                                         ;
+; USE_CS_BUFFERS         ; 1           ; Untyped                                         ;
+; CARRY_CHAIN            ; MANUAL      ; Untyped                                         ;
+; CARRY_CHAIN_LENGTH     ; 48          ; CARRY_CHAIN_LENGTH                              ;
+; DEVICE_FAMILY          ; MAX7000S    ; Untyped                                         ;
+; USE_WYS                ; OFF         ; Untyped                                         ;
+; STYLE                  ; FAST        ; Untyped                                         ;
+; CBXI_PARAMETER         ; add_sub_pnh ; Untyped                                         ;
+; AUTO_CARRY_CHAINS      ; ON          ; AUTO_CARRY                                      ;
+; IGNORE_CARRY_BUFFERS   ; OFF         ; IGNORE_CARRY                                    ;
+; AUTO_CASCADE_CHAINS    ; ON          ; AUTO_CASCADE                                    ;
+; IGNORE_CASCADE_BUFFERS ; OFF         ; IGNORE_CASCADE                                  ;
++------------------------+-------------+-------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: MOD_24:u_hour|lpm_add_sub:Add0 ;
++------------------------+-------------+------------------------------------------+
+; Parameter Name         ; Value       ; Type                                     ;
++------------------------+-------------+------------------------------------------+
+; LPM_WIDTH              ; 4           ; Untyped                                  ;
+; LPM_REPRESENTATION     ; UNSIGNED    ; Untyped                                  ;
+; LPM_DIRECTION          ; ADD         ; Untyped                                  ;
+; ONE_INPUT_IS_CONSTANT  ; NO          ; Untyped                                  ;
+; LPM_PIPELINE           ; 0           ; Untyped                                  ;
+; MAXIMIZE_SPEED         ; 5           ; Untyped                                  ;
+; REGISTERED_AT_END      ; 0           ; Untyped                                  ;
+; OPTIMIZE_FOR_SPEED     ; 9           ; Untyped                                  ;
+; USE_CS_BUFFERS         ; 1           ; Untyped                                  ;
+; CARRY_CHAIN            ; MANUAL      ; Untyped                                  ;
+; CARRY_CHAIN_LENGTH     ; 48          ; CARRY_CHAIN_LENGTH                       ;
+; DEVICE_FAMILY          ; MAX7000S    ; Untyped                                  ;
+; USE_WYS                ; OFF         ; Untyped                                  ;
+; STYLE                  ; FAST        ; Untyped                                  ;
+; CBXI_PARAMETER         ; add_sub_3kh ; Untyped                                  ;
+; AUTO_CARRY_CHAINS      ; ON          ; AUTO_CARRY                               ;
+; IGNORE_CARRY_BUFFERS   ; OFF         ; IGNORE_CARRY                             ;
+; AUTO_CASCADE_CHAINS    ; ON          ; AUTO_CASCADE                             ;
+; IGNORE_CASCADE_BUFFERS ; OFF         ; IGNORE_CASCADE                           ;
++------------------------+-------------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------+
+; Port Connectivity Checks: "alarm_judge:u_judge" ;
++------+-------+----------+-----------------------+
+; Port ; Type  ; Severity ; Details               ;
++------+-------+----------+-----------------------+
+; EN1  ; Input ; Info     ; Stuck at VCC          ;
++------+-------+----------+-----------------------+
+
+
++-----------------------------------------+
+; Port Connectivity Checks: "BCD_7:u_seg" ;
++------+-------+----------+---------------+
+; Port ; Type  ; Severity ; Details       ;
++------+-------+----------+---------------+
+; EN   ; Input ; Info     ; Stuck at VCC  ;
++------+-------+----------+---------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Decoder_2to4:u_dec_set"                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; outD ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-------------------------------+
@@ -113,7 +410,7 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
-    Info: Processing started: Wed Jun 03 10:30:16 2026
+    Info: Processing started: Wed Jun 03 11:21:48 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DigitalClock -c DigitalClock
 Info: Found 1 design units, including 1 entities, in source file Decoder_2to4.v
     Info: Found entity 1: Decoder_2to4
@@ -135,13 +432,77 @@ Info: Found 1 design units, including 1 entities, in source file hour_convert.v
     Info: Found entity 1: hour_convert
 Info: Found 1 design units, including 1 entities, in source file depart.v
     Info: Found entity 1: depart
-Error (10170): Verilog HDL syntax error at DigitalClock.v(318) near text ".";  expecting an identifier, or a number, or a system task, or "(", or "{", or a base, or a real number, or "(*" File: D:/SHUDIAN/DigitalClock.v Line: 318
-Error (10112): Ignored design unit "DigitalClock" at DigitalClock.v(1) due to previous errors File: D:/SHUDIAN/DigitalClock.v Line: 1
-Info: Found 0 design units, including 0 entities, in source file DigitalClock.v
-Error: Quartus II Analysis & Synthesis was unsuccessful. 2 errors, 0 warnings
-    Error: Peak virtual memory: 234 megabytes
-    Error: Processing ended: Wed Jun 03 10:30:17 2026
-    Error: Elapsed time: 00:00:01
-    Error: Total CPU time (on all processors): 00:00:00
+Info: Found 1 design units, including 1 entities, in source file DigitalClock.v
+    Info: Found entity 1: DigitalClock
+Info: Elaborating entity "DigitalClock" for the top level hierarchy
+Info: Elaborating entity "Decoder_2to4" for hierarchy "Decoder_2to4:u_dec_set"
+Info: Elaborating entity "MOD_60" for hierarchy "MOD_60:u_sec"
+Info: Elaborating entity "carry_60" for hierarchy "carry_60:u_sec_carry"
+Info: Elaborating entity "MOD_24" for hierarchy "MOD_24:u_hour"
+Info: Elaborating entity "BCD_7" for hierarchy "BCD_7:u_seg"
+Info: Elaborating entity "alarm_storage" for hierarchy "alarm_storage:u_alm_min"
+Info: Elaborating entity "alarm_judge" for hierarchy "alarm_judge:u_judge"
+Info: Elaborating entity "speaker" for hierarchy "speaker:u_spk"
+Info: Elaborating entity "depart" for hierarchy "depart:u_depart"
+Info: Elaborating entity "hour_convert" for hierarchy "hour_convert:u_hconv"
+Info: Inferred 1 megafunctions from design logic
+    Info: Inferred lpm_counter megafunction (LPM_WIDTH=6) from the following logic: "depart:u_depart|div[0]~18"
+Info: Inferred 3 megafunctions from design logic
+    Info: Inferred adder/subtractor megafunction ("lpm_add_sub") from the following logic: "hour_convert:u_hconv|Add0"
+    Info: Inferred adder/subtractor megafunction ("lpm_add_sub") from the following logic: "hour_convert:u_hconv|Add1"
+    Info: Inferred adder/subtractor megafunction ("lpm_add_sub") from the following logic: "MOD_24:u_hour|Add0"
+Info: Elaborated megafunction instantiation "depart:u_depart|lpm_counter:div_rtl_0"
+Info: Instantiated megafunction "depart:u_depart|lpm_counter:div_rtl_0" with the following parameter:
+    Info: Parameter "LPM_WIDTH" = "6"
+    Info: Parameter "LPM_DIRECTION" = "UP"
+    Info: Parameter "LPM_TYPE" = "LPM_COUNTER"
+Info: Elaborated megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add0"
+Info: Instantiated megafunction "hour_convert:u_hconv|lpm_add_sub:Add0" with the following parameter:
+    Info: Parameter "LPM_WIDTH" = "5"
+    Info: Parameter "LPM_DIRECTION" = "ADD"
+    Info: Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info: Parameter "ONE_INPUT_IS_CONSTANT" = "NO"
+Info: Elaborated megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add0|addcore:adder", which is child of megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add0"
+Info: Elaborated megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add0|addcore:adder|a_csnbuffer:oflow_node", which is child of megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add0"
+Info: Elaborated megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add0|addcore:adder|a_csnbuffer:result_node", which is child of megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add0"
+Info: Elaborated megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add0|addcore:adder|addcore:adder[0]", which is child of megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add0"
+Info: Elaborated megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add0|addcore:adder|addcore:adder[0]|a_csnbuffer:oflow_node", which is child of megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add0"
+Info: Elaborated megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add0|addcore:adder|addcore:adder[0]|a_csnbuffer:result_node", which is child of megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add0"
+Info: Elaborated megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add0|altshift:result_ext_latency_ffs", which is child of megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add0"
+Info: Elaborated megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add0|altshift:carry_ext_latency_ffs", which is child of megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add0"
+Info: Elaborated megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add1"
+Info: Instantiated megafunction "hour_convert:u_hconv|lpm_add_sub:Add1" with the following parameter:
+    Info: Parameter "LPM_WIDTH" = "6"
+    Info: Parameter "LPM_DIRECTION" = "ADD"
+    Info: Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info: Parameter "ONE_INPUT_IS_CONSTANT" = "YES"
+Info: Elaborated megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add1|addcore:adder", which is child of megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add1"
+Info: Elaborated megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add1|addcore:adder|a_csnbuffer:oflow_node", which is child of megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add1"
+Info: Elaborated megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add1|addcore:adder|a_csnbuffer:result_node", which is child of megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add1"
+Info: Elaborated megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add1|addcore:adder|addcore:adder[0]", which is child of megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add1"
+Info: Elaborated megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add1|altshift:result_ext_latency_ffs", which is child of megafunction instantiation "hour_convert:u_hconv|lpm_add_sub:Add1"
+Info: Elaborated megafunction instantiation "MOD_24:u_hour|lpm_add_sub:Add0"
+Info: Instantiated megafunction "MOD_24:u_hour|lpm_add_sub:Add0" with the following parameter:
+    Info: Parameter "LPM_WIDTH" = "4"
+    Info: Parameter "LPM_DIRECTION" = "ADD"
+    Info: Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info: Parameter "ONE_INPUT_IS_CONSTANT" = "NO"
+Info: Elaborated megafunction instantiation "MOD_24:u_hour|lpm_add_sub:Add0|addcore:adder", which is child of megafunction instantiation "MOD_24:u_hour|lpm_add_sub:Add0"
+Info: Elaborated megafunction instantiation "MOD_24:u_hour|lpm_add_sub:Add0|addcore:adder|a_csnbuffer:oflow_node", which is child of megafunction instantiation "MOD_24:u_hour|lpm_add_sub:Add0"
+Info: Elaborated megafunction instantiation "MOD_24:u_hour|lpm_add_sub:Add0|addcore:adder|a_csnbuffer:result_node", which is child of megafunction instantiation "MOD_24:u_hour|lpm_add_sub:Add0"
+Info: Elaborated megafunction instantiation "MOD_24:u_hour|lpm_add_sub:Add0|addcore:adder|addcore:adder[0]", which is child of megafunction instantiation "MOD_24:u_hour|lpm_add_sub:Add0"
+Info: Elaborated megafunction instantiation "MOD_24:u_hour|lpm_add_sub:Add0|altshift:result_ext_latency_ffs", which is child of megafunction instantiation "MOD_24:u_hour|lpm_add_sub:Add0"
+Info: Ignored 6 buffer(s)
+    Info: Ignored 6 SOFT buffer(s)
+Info: Implemented 198 device resources after synthesis - the final resource count might be different
+    Info: Implemented 18 input pins
+    Info: Implemented 29 output pins
+    Info: Implemented 121 macrocells
+    Info: Implemented 30 shareable expanders
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 243 megabytes
+    Info: Processing ended: Wed Jun 03 11:21:50 2026
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:01
 
 

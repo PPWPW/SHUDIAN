@@ -1,6 +1,8 @@
 module DigitalClock (
     input           CLK,        // 1Hz clock, pin 58
     input           CLK_10K,    // 10kHz clock, pin 56 (alarm speaker)
+    input           SW_MODE,    // pin 63, 0=clock, 1=stopwatch
+    input           SW_RUN,     // pin 64, 0=pause, 1=run
     input           MODE_12_24, // pin 65, 0=24h, 1=12h
     input           ALARM_SW,   // pin 67, alarm on/off switch
     input           EN_setalarm,
@@ -214,11 +216,13 @@ MOD_24 u_hour (
 // ============================================================
 // BCD to 7-segment for second_low digit
 // ============================================================
+wire [3:0] seg_in = SW_MODE ? sw_s0 : {S0D, S0C, S0B, S0A};
+
 BCD_7 u_seg (
-    .inD        (S0D),
-    .inC        (S0C),
-    .inB        (S0B),
-    .inA        (S0A),
+    .inD        (seg_in[3]),
+    .inC        (seg_in[2]),
+    .inB        (seg_in[1]),
+    .inA        (seg_in[0]),
     .EN         (1'b1),
     .a          (second_low_a),
     .b          (second_low_b),
@@ -307,6 +311,21 @@ depart u_depart (
 );
 
 // ============================================================
+// stopwatch (MM:SS)
+// ============================================================
+wire [3:0] sw_s0, sw_s1, sw_m0, sw_m1;
+
+stopwatch u_sw (
+    .CLK        (CLK),
+    .SW_MODE    (SW_MODE),
+    .SW_RUN     (SW_RUN),
+    .s0         (sw_s0),
+    .s1         (sw_s1),
+    .m0         (sw_m0),
+    .m1         (sw_m1)
+);
+
+// ============================================================
 // 12h/24h display conversion
 // ============================================================
 wire [3:0] disp_h_ten, disp_h_one;
@@ -322,31 +341,38 @@ hour_convert u_hconv (
 // ============================================================
 // output assignments
 // ============================================================
+// display source: SW_MODE=0 → clock, SW_MODE=1 → stopwatch
+wire [3:0] d_h_ten  = SW_MODE ? 4'd0      : disp_h_ten;
+wire [3:0] d_h_one  = SW_MODE ? 4'd0      : disp_h_one;
+wire [3:0] d_m_ten  = SW_MODE ? sw_m1     : {M1D, M1C, M1B, M1A};
+wire [3:0] d_m_one  = SW_MODE ? sw_m0     : {M0D, M0C, M0B, M0A};
+wire [3:0] d_s_high = SW_MODE ? sw_s1     : {S1D, S1C, S1B, S1A};
+
 assign Alarm = jg_out;
 
-assign hour_high_A = disp_h_ten[0];
-assign hour_high_B = disp_h_ten[1];
-assign hour_high_C = disp_h_ten[2];
-assign hour_high_D = disp_h_ten[3];
+assign hour_high_A = d_h_ten[0];
+assign hour_high_B = d_h_ten[1];
+assign hour_high_C = d_h_ten[2];
+assign hour_high_D = d_h_ten[3];
 
-assign hour_low_A = disp_h_one[0];
-assign hour_low_B = disp_h_one[1];
-assign hour_low_C = disp_h_one[2];
-assign hour_low_D = disp_h_one[3];
+assign hour_low_A = d_h_one[0];
+assign hour_low_B = d_h_one[1];
+assign hour_low_C = d_h_one[2];
+assign hour_low_D = d_h_one[3];
 
-assign minute_high_A = M1A;
-assign minute_high_B = M1B;
-assign minute_high_C = M1C;
-assign minute_high_D = M1D;
+assign minute_high_A = d_m_ten[0];
+assign minute_high_B = d_m_ten[1];
+assign minute_high_C = d_m_ten[2];
+assign minute_high_D = d_m_ten[3];
 
-assign minute_low_A = M0A;
-assign minute_low_B = M0B;
-assign minute_low_C = M0C;
-assign minute_low_D = M0D;
+assign minute_low_A = d_m_one[0];
+assign minute_low_B = d_m_one[1];
+assign minute_low_C = d_m_one[2];
+assign minute_low_D = d_m_one[3];
 
-assign second_high_A = S1A;
-assign second_high_B = S1B;
-assign second_high_C = S1C;
-assign second_high_D = S1D;
+assign second_high_A = d_s_high[0];
+assign second_high_B = d_s_high[1];
+assign second_high_C = d_s_high[2];
+assign second_high_D = d_s_high[3];
 
 endmodule
