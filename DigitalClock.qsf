@@ -56,6 +56,7 @@ set_global_assignment -name VERILOG_FILE carry_60.v
 set_global_assignment -name VERILOG_FILE alarm_storage.v
 set_global_assignment -name VERILOG_FILE alarm_judge.v
 set_global_assignment -name VERILOG_FILE speaker.v
+set_global_assignment -name VERILOG_FILE hour_convert.v
 set_global_assignment -name VERILOG_FILE depart.v
 set_global_assignment -name VERILOG_FILE DigitalClock.v
 set_global_assignment -name MISC_FILE "D:/SHUDIAN/DigitalClock.dpf"
