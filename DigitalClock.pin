@@ -134,17 +134,17 @@ VCCIO                        : 66        : power  :                   : 5.0V    
 ALARM_SW                     : 67        : input  : TTL               :         :           : Y              
 SettimeB                     : 68        : input  : TTL               :         :           : Y              
 SettimeA                     : 69        : input  : TTL               :         :           : Y              
-settime1D                    : 70        : input  : TTL               :         :           : Y              
+settime0D                    : 70        : input  : TTL               :         :           : Y              
 TDO                          : 71        : output : TTL               :         :           : Y              
 GND                          : 72        : gnd    :                   :         :           :                
-settime1C                    : 73        : input  : TTL               :         :           : Y              
-settime1B                    : 74        : input  : TTL               :         :           : Y              
-settime1A                    : 75        : input  : TTL               :         :           : Y              
-settime0D                    : 76        : input  : TTL               :         :           : Y              
-settime0C                    : 77        : input  : TTL               :         :           : Y              
+settime0C                    : 73        : input  : TTL               :         :           : Y              
+settime0B                    : 74        : input  : TTL               :         :           : Y              
+settime0A                    : 75        : input  : TTL               :         :           : Y              
+settime1D                    : 76        : input  : TTL               :         :           : Y              
+settime1C                    : 77        : input  : TTL               :         :           : Y              
 VCCIO                        : 78        : power  :                   : 5.0V    :           :                
-settime0B                    : 79        : input  : TTL               :         :           : Y              
-settime0A                    : 80        : input  : TTL               :         :           : Y              
+settime1B                    : 79        : input  : TTL               :         :           : Y              
+settime1A                    : 80        : input  : TTL               :         :           : Y              
 EN_setclock                  : 81        : input  : TTL               :         :           : Y              
 GND                          : 82        : gnd    :                   :         :           :                
 GND+                         : 83        :        :                   :         :           :                

@@ -37,7 +37,7 @@ Slack          : N/A
 Required Time  : None
 Actual Time    : 2.000 ns
 From           : SW_MODE
-To             : sw_m1[3]
+To             : stopwatch:u_sw|sw_m1[3]
 From Clock     : --
 To Clock       : CLK
 Failed Paths   : 0

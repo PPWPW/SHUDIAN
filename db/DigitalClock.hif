@@ -2749,6 +2749,42 @@ data0
 
 # end
 # entity
+stopwatch
+# storage
+db|DigitalClock.(36).cnf
+db|DigitalClock.(36).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+stopwatch.v
+ec791fc4413f851597b5d35ae35be
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+stopwatch:u_sw
+}
+# macro_sequence
+
+# end
+# entity
 DigitalClock
 # storage
 db|DigitalClock.(0).cnf
@@ -2760,7 +2796,7 @@ ON
 # case_sensitive
 # source_file
 DigitalClock.v
-7a156653497f01ee2330af494d4ba5
+2fb3e17132f75eface4e13b9c98badbe
 8
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -2780,6 +2816,42 @@ VERILOG_NON_CONSTANT_LOOP_LIMIT
 }
 # hierarchies {
 |
+}
+# macro_sequence
+
+# end
+# entity
+chime
+# storage
+db|DigitalClock.(37).cnf
+db|DigitalClock.(37).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+chime.v
+18d78336c62f9abd8e5b8b20f5727c57
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+chime:u_chime
 }
 # macro_sequence
 

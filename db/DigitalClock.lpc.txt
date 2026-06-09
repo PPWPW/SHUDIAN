@@ -4,6 +4,8 @@
 ; Hierarchy   ; Input ; Constant Input ; Unused Input ; Floating Input ; Output ; Constant Output ; Unused Output ; Floating Output ; Bidir ; Constant Bidir ; Unused Bidir ; Input only Bidir ; Output only Bidir ;
 +-------------+-------+----------------+--------------+----------------+--------+-----------------+---------------+-----------------+-------+----------------+--------------+------------------+-------------------+
 ; u_hconv     ; 9     ; 0              ; 0            ; 0              ; 8      ; 0               ; 0             ; 0               ; 0     ; 0              ; 0            ; 0                ; 0                 ;
+; u_sw        ; 3     ; 0              ; 0            ; 0              ; 16     ; 0               ; 0             ; 0               ; 0     ; 0              ; 0            ; 0                ; 0                 ;
+; u_chime     ; 17    ; 0              ; 0            ; 0              ; 1      ; 0               ; 0             ; 0               ; 0     ; 0              ; 0            ; 0                ; 0                 ;
 ; u_depart    ; 6     ; 0              ; 0            ; 0              ; 1      ; 0               ; 0             ; 0               ; 0     ; 0              ; 0            ; 0                ; 0                 ;
 ; u_spk       ; 1     ; 0              ; 0            ; 0              ; 3      ; 0               ; 0             ; 0               ; 0     ; 0              ; 0            ; 0                ; 0                 ;
 ; u_judge     ; 35    ; 1              ; 0            ; 1              ; 1      ; 1               ; 1             ; 1               ; 0     ; 0              ; 0            ; 0                ; 0                 ;

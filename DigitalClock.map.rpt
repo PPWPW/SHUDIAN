@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DigitalClock
-Wed Jun 03 11:21:50 2026
+Tue Jun 09 23:46:38 2026
 Quartus II Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
 
 
@@ -52,12 +52,12 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                               ;
 +-----------------------------+----------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Wed Jun 03 11:21:50 2026        ;
+; Analysis & Synthesis Status ; Successful - Tue Jun 09 23:46:38 2026        ;
 ; Quartus II Version          ; 9.0 Build 235 06/17/2009 SP 2 SJ Web Edition ;
 ; Revision Name               ; DigitalClock                                 ;
 ; Top-level Entity Name       ; DigitalClock                                 ;
 ; Family                      ; MAX7000S                                     ;
-; Total macrocells            ; 121                                          ;
+; Total macrocells            ; 122                                          ;
 ; Total pins                  ; 47                                           ;
 +-----------------------------+----------------------------------------------+
 
@@ -118,47 +118,49 @@ applicable agreement for further details.
 +--------------------------------------------------------------+----------------+---------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                            ;
-+----------------------------------+-----------------+------------------------+---------------------------------------------------------------------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                        ;
-+----------------------------------+-----------------+------------------------+---------------------------------------------------------------------+
-; Decoder_2to4.v                   ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/Decoder_2to4.v                                           ;
-; BCD_7.v                          ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/BCD_7.v                                                  ;
-; MOD_60.v                         ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/MOD_60.v                                                 ;
-; MOD_24.v                         ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/MOD_24.v                                                 ;
-; carry_60.v                       ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/carry_60.v                                               ;
-; alarm_storage.v                  ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/alarm_storage.v                                          ;
-; alarm_judge.v                    ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/alarm_judge.v                                            ;
-; speaker.v                        ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/speaker.v                                                ;
-; hour_convert.v                   ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/hour_convert.v                                           ;
-; depart.v                         ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/depart.v                                                 ;
-; DigitalClock.v                   ; yes             ; User Verilog HDL File  ; D:/SHUDIAN/DigitalClock.v                                           ;
-; lpm_counter.tdf                  ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/lpm_counter.tdf         ;
-; lpm_constant.inc                 ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/lpm_constant.inc        ;
-; lpm_decode.inc                   ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/lpm_decode.inc          ;
-; lpm_add_sub.inc                  ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/lpm_add_sub.inc         ;
-; cmpconst.inc                     ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/cmpconst.inc            ;
-; lpm_compare.inc                  ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/lpm_compare.inc         ;
-; lpm_counter.inc                  ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/lpm_counter.inc         ;
-; dffeea.inc                       ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/dffeea.inc              ;
-; alt_synch_counter.inc            ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/alt_synch_counter.inc   ;
-; alt_synch_counter_f.inc          ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/alt_synch_counter_f.inc ;
-; alt_counter_f10ke.inc            ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/alt_counter_f10ke.inc   ;
-; alt_counter_stratix.inc          ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/alt_counter_stratix.inc ;
-; aglobal90.inc                    ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/aglobal90.inc           ;
-; lpm_add_sub.tdf                  ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/lpm_add_sub.tdf         ;
-; addcore.inc                      ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/addcore.inc             ;
-; look_add.inc                     ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/look_add.inc            ;
-; bypassff.inc                     ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/bypassff.inc            ;
-; altshift.inc                     ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/altshift.inc            ;
-; alt_stratix_add_sub.inc          ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/alt_stratix_add_sub.inc ;
-; alt_mercury_add_sub.inc          ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/alt_mercury_add_sub.inc ;
-; addcore.tdf                      ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/addcore.tdf             ;
-; a_csnbuffer.inc                  ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/a_csnbuffer.inc         ;
-; a_csnbuffer.tdf                  ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/a_csnbuffer.tdf         ;
-; altshift.tdf                     ; yes             ; Megafunction           ; d:/quartus2/quartus/libraries/megafunctions/altshift.tdf            ;
-+----------------------------------+-----------------+------------------------+---------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                  ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                        ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------+
+; Decoder_2to4.v                   ; yes             ; User Verilog HDL File        ; D:/SHUDIAN/Decoder_2to4.v                                           ;
+; BCD_7.v                          ; yes             ; User Verilog HDL File        ; D:/SHUDIAN/BCD_7.v                                                  ;
+; MOD_60.v                         ; yes             ; User Verilog HDL File        ; D:/SHUDIAN/MOD_60.v                                                 ;
+; MOD_24.v                         ; yes             ; User Verilog HDL File        ; D:/SHUDIAN/MOD_24.v                                                 ;
+; carry_60.v                       ; yes             ; User Verilog HDL File        ; D:/SHUDIAN/carry_60.v                                               ;
+; alarm_storage.v                  ; yes             ; User Verilog HDL File        ; D:/SHUDIAN/alarm_storage.v                                          ;
+; alarm_judge.v                    ; yes             ; User Verilog HDL File        ; D:/SHUDIAN/alarm_judge.v                                            ;
+; speaker.v                        ; yes             ; User Verilog HDL File        ; D:/SHUDIAN/speaker.v                                                ;
+; stopwatch.v                      ; yes             ; User Verilog HDL File        ; D:/SHUDIAN/stopwatch.v                                              ;
+; hour_convert.v                   ; yes             ; User Verilog HDL File        ; D:/SHUDIAN/hour_convert.v                                           ;
+; depart.v                         ; yes             ; User Verilog HDL File        ; D:/SHUDIAN/depart.v                                                 ;
+; DigitalClock.v                   ; yes             ; User Verilog HDL File        ; D:/SHUDIAN/DigitalClock.v                                           ;
+; chime.v                          ; yes             ; Auto-Found Verilog HDL File  ; D:/SHUDIAN/chime.v                                                  ;
+; lpm_counter.tdf                  ; yes             ; Megafunction                 ; d:/quartus2/quartus/libraries/megafunctions/lpm_counter.tdf         ;
+; lpm_constant.inc                 ; yes             ; Megafunction                 ; d:/quartus2/quartus/libraries/megafunctions/lpm_constant.inc        ;
+; lpm_decode.inc                   ; yes             ; Megafunction                 ; d:/quartus2/quartus/libraries/megafunctions/lpm_decode.inc          ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction                 ; d:/quartus2/quartus/libraries/megafunctions/lpm_add_sub.inc         ;
+; cmpconst.inc                     ; yes             ; Megafunction                 ; d:/quartus2/quartus/libraries/megafunctions/cmpconst.inc            ;
+; lpm_compare.inc                  ; yes             ; Megafunction                 ; d:/quartus2/quartus/libraries/megafunctions/lpm_compare.inc         ;
+; lpm_counter.inc                  ; yes             ; Megafunction                 ; d:/quartus2/quartus/libraries/megafunctions/lpm_counter.inc         ;
+; dffeea.inc                       ; yes             ; Megafunction                 ; d:/quartus2/quartus/libraries/megafunctions/dffeea.inc              ;
+; alt_synch_counter.inc            ; yes             ; Megafunction                 ; d:/quartus2/quartus/libraries/megafunctions/alt_synch_counter.inc   ;
+; alt_synch_counter_f.inc          ; yes             ; Megafunction                 ; d:/quartus2/quartus/libraries/megafunctions/alt_synch_counter_f.inc ;
+; alt_counter_f10ke.inc            ; yes             ; Megafunction                 ; d:/quartus2/quartus/libraries/megafunctions/alt_counter_f10ke.inc   ;
+; alt_counter_stratix.inc          ; yes             ; Megafunction                 ; d:/quartus2/quartus/libraries/megafunctions/alt_counter_stratix.inc ;
+; aglobal90.inc                    ; yes             ; Megafunction                 ; d:/quartus2/quartus/libraries/megafunctions/aglobal90.inc           ;
+; lpm_add_sub.tdf                  ; yes             ; Megafunction                 ; d:/quartus2/quartus/libraries/megafunctions/lpm_add_sub.tdf         ;
+; addcore.inc                      ; yes             ; Megafunction                 ; d:/quartus2/quartus/libraries/megafunctions/addcore.inc             ;
+; look_add.inc                     ; yes             ; Megafunction                 ; d:/quartus2/quartus/libraries/megafunctions/look_add.inc            ;
+; bypassff.inc                     ; yes             ; Megafunction                 ; d:/quartus2/quartus/libraries/megafunctions/bypassff.inc            ;
+; altshift.inc                     ; yes             ; Megafunction                 ; d:/quartus2/quartus/libraries/megafunctions/altshift.inc            ;
+; alt_stratix_add_sub.inc          ; yes             ; Megafunction                 ; d:/quartus2/quartus/libraries/megafunctions/alt_stratix_add_sub.inc ;
+; alt_mercury_add_sub.inc          ; yes             ; Megafunction                 ; d:/quartus2/quartus/libraries/megafunctions/alt_mercury_add_sub.inc ;
+; addcore.tdf                      ; yes             ; Megafunction                 ; d:/quartus2/quartus/libraries/megafunctions/addcore.tdf             ;
+; a_csnbuffer.inc                  ; yes             ; Megafunction                 ; d:/quartus2/quartus/libraries/megafunctions/a_csnbuffer.inc         ;
+; a_csnbuffer.tdf                  ; yes             ; Megafunction                 ; d:/quartus2/quartus/libraries/megafunctions/a_csnbuffer.tdf         ;
+; altshift.tdf                     ; yes             ; Megafunction                 ; d:/quartus2/quartus/libraries/megafunctions/altshift.tdf            ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------+
 
 
 +---------------------------------------------+
@@ -166,15 +168,15 @@ applicable agreement for further details.
 +----------------------+----------------------+
 ; Resource             ; Usage                ;
 +----------------------+----------------------+
-; Logic cells          ; 121                  ;
+; Logic cells          ; 122                  ;
 ; Total registers      ; 71                   ;
 ; I/O pins             ; 47                   ;
 ; Shareable expanders  ; 30                   ;
 ; Parallel expanders   ; 14                   ;
 ; Maximum fan-out node ; SW_MODE              ;
 ; Maximum fan-out      ; 51                   ;
-; Total fan-out        ; 1170                 ;
-; Average fan-out      ; 5.91                 ;
+; Total fan-out        ; 1188                 ;
+; Average fan-out      ; 5.97                 ;
 +----------------------+----------------------+
 
 
@@ -183,7 +185,7 @@ applicable agreement for further details.
 +--------------------------------+------------+------+-----------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node     ; Macrocells ; Pins ; Full Hierarchy Name                                                         ; Library Name ;
 +--------------------------------+------------+------+-----------------------------------------------------------------------------+--------------+
-; |DigitalClock                  ; 121        ; 47   ; |DigitalClock                                                               ; work         ;
+; |DigitalClock                  ; 122        ; 47   ; |DigitalClock                                                               ; work         ;
 ;    |BCD_7:u_seg|               ; 11         ; 0    ; |DigitalClock|BCD_7:u_seg                                                   ; work         ;
 ;    |MOD_24:u_hour|             ; 12         ; 0    ; |DigitalClock|MOD_24:u_hour                                                 ; work         ;
 ;       |lpm_add_sub:Add0|       ; 1          ; 0    ; |DigitalClock|MOD_24:u_hour|lpm_add_sub:Add0                                ; work         ;
@@ -198,6 +200,7 @@ applicable agreement for further details.
 ;       |lpm_counter:div_rtl_0|  ; 6          ; 0    ; |DigitalClock|depart:u_depart|lpm_counter:div_rtl_0                         ; work         ;
 ;    |hour_convert:u_hconv|      ; 1          ; 0    ; |DigitalClock|hour_convert:u_hconv                                          ; work         ;
 ;    |speaker:u_spk|             ; 6          ; 0    ; |DigitalClock|speaker:u_spk                                                 ; work         ;
+;    |stopwatch:u_sw|            ; 16         ; 0    ; |DigitalClock|stopwatch:u_sw                                                ; work         ;
 +--------------------------------+------------+------+-----------------------------------------------------------------------------+--------------+
 
 
@@ -410,7 +413,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
-    Info: Processing started: Wed Jun 03 11:21:48 2026
+    Info: Processing started: Tue Jun 09 23:46:36 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DigitalClock -c DigitalClock
 Info: Found 1 design units, including 1 entities, in source file Decoder_2to4.v
     Info: Found entity 1: Decoder_2to4
@@ -428,6 +431,8 @@ Info: Found 1 design units, including 1 entities, in source file alarm_judge.v
     Info: Found entity 1: alarm_judge
 Info: Found 1 design units, including 1 entities, in source file speaker.v
     Info: Found entity 1: speaker
+Info: Found 1 design units, including 1 entities, in source file stopwatch.v
+    Info: Found entity 1: stopwatch
 Info: Found 1 design units, including 1 entities, in source file hour_convert.v
     Info: Found entity 1: hour_convert
 Info: Found 1 design units, including 1 entities, in source file depart.v
@@ -444,6 +449,10 @@ Info: Elaborating entity "alarm_storage" for hierarchy "alarm_storage:u_alm_min"
 Info: Elaborating entity "alarm_judge" for hierarchy "alarm_judge:u_judge"
 Info: Elaborating entity "speaker" for hierarchy "speaker:u_spk"
 Info: Elaborating entity "depart" for hierarchy "depart:u_depart"
+Warning: Using design file chime.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info: Found entity 1: chime
+Info: Elaborating entity "chime" for hierarchy "chime:u_chime"
+Info: Elaborating entity "stopwatch" for hierarchy "stopwatch:u_sw"
 Info: Elaborating entity "hour_convert" for hierarchy "hour_convert:u_hconv"
 Info: Inferred 1 megafunctions from design logic
     Info: Inferred lpm_counter megafunction (LPM_WIDTH=6) from the following logic: "depart:u_depart|div[0]~18"
@@ -494,15 +503,15 @@ Info: Elaborated megafunction instantiation "MOD_24:u_hour|lpm_add_sub:Add0|addc
 Info: Elaborated megafunction instantiation "MOD_24:u_hour|lpm_add_sub:Add0|altshift:result_ext_latency_ffs", which is child of megafunction instantiation "MOD_24:u_hour|lpm_add_sub:Add0"
 Info: Ignored 6 buffer(s)
     Info: Ignored 6 SOFT buffer(s)
-Info: Implemented 198 device resources after synthesis - the final resource count might be different
+Info: Implemented 199 device resources after synthesis - the final resource count might be different
     Info: Implemented 18 input pins
     Info: Implemented 29 output pins
-    Info: Implemented 121 macrocells
+    Info: Implemented 122 macrocells
     Info: Implemented 30 shareable expanders
-Info: Quartus II Analysis & Synthesis was successful. 0 errors, 0 warnings
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 243 megabytes
-    Info: Processing ended: Wed Jun 03 11:21:50 2026
+    Info: Processing ended: Tue Jun 09 23:46:38 2026
     Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Total CPU time (on all processors): 00:00:02
 
 

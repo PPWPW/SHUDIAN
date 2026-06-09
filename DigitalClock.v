@@ -300,6 +300,7 @@ speaker u_spk (
 // ============================================================
 // depart (alarm output control)
 // ============================================================
+wire depart_spk;
 depart u_depart (
     .jg_in      (jg_out),
     .clk        (CLK),
@@ -307,8 +308,34 @@ depart u_depart (
     .clk_high   (spk_high),
     .clk_middle (spk_middle),
     .clk_low    (spk_low),
-    .speak_out  (speaker)
+    .speak_out  (depart_spk)
 );
+
+// ============================================================
+// hourly chime
+// ============================================================
+wire chime_spk;
+chime u_chime (
+    .M1D        (M1D),
+    .M1C        (M1C),
+    .M1B        (M1B),
+    .M1A        (M1A),
+    .M0D        (M0D),
+    .M0C        (M0C),
+    .M0B        (M0B),
+    .M0A        (M0A),
+    .S1D        (S1D),
+    .S1C        (S1C),
+    .S1B        (S1B),
+    .S1A        (S1A),
+    .S0D        (S0D),
+    .S0C        (S0C),
+    .S0B        (S0B),
+    .S0A        (S0A),
+    .tone_in    (spk_high),
+    .chime_out  (chime_spk)
+);
+assign speaker = depart_spk | chime_spk;
 
 // ============================================================
 // stopwatch (MM:SS)

@@ -1,5 +1,5 @@
 Flow report for DigitalClock
-Wed Jun 03 11:21:53 2026
+Tue Jun 09 23:46:40 2026
 Quartus II Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +------------------------------------------------------------------------+
 ; Flow Summary                                                           ;
 +-------------------------+----------------------------------------------+
-; Flow Status             ; Successful - Wed Jun 03 11:21:53 2026        ;
+; Flow Status             ; Successful - Tue Jun 09 23:46:40 2026        ;
 ; Quartus II Version      ; 9.0 Build 235 06/17/2009 SP 2 SJ Web Edition ;
 ; Revision Name           ; DigitalClock                                 ;
 ; Top-level Entity Name   ; DigitalClock                                 ;
@@ -46,7 +46,7 @@ applicable agreement for further details.
 ; Device                  ; EPM7128SLC84-7                               ;
 ; Timing Models           ; Final                                        ;
 ; Met timing requirements ; Yes                                          ;
-; Total macrocells        ; 121 / 128 ( 95 % )                           ;
+; Total macrocells        ; 122 / 128 ( 95 % )                           ;
 ; Total pins              ; 51 / 68 ( 75 % )                             ;
 +-------------------------+----------------------------------------------+
 
@@ -56,7 +56,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/03/2026 11:21:49 ;
+; Start date & time ; 06/09/2026 23:46:36 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; DigitalClock        ;
 +-------------------+---------------------+
@@ -67,7 +67,7 @@ applicable agreement for further details.
 +------------------------------------+---------------------------------+---------------+-------------+----------------+
 ; Assignment Name                    ; Value                           ; Default Value ; Entity Name ; Section Id     ;
 +------------------------------------+---------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID              ; 220374919695727.178045690864516 ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID              ; 220374919695727.178101999608056 ; --            ; --          ; --             ;
 ; FITTER_EFFORT                      ; Standard Fit                    ; Auto Fit      ; --          ; --             ;
 ; MISC_FILE                          ; D:/SHUDIAN/DigitalClock.dpf     ; --            ; --          ; --             ;
 ; OPTIMIZE_HOLD_TIMING               ; IO Paths and Minimum TPD Paths  ; --            ; --          ; --             ;
@@ -82,11 +82,11 @@ applicable agreement for further details.
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name             ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis    ; 00:00:02     ; 1.0                     ; 243 MB              ; 00:00:01                           ;
-; Fitter                  ; 00:00:00     ; 1.0                     ; 228 MB              ; 00:00:00                           ;
-; Assembler               ; 00:00:00     ; 1.0                     ; 213 MB              ; 00:00:00                           ;
+; Analysis & Synthesis    ; 00:00:02     ; 1.0                     ; 243 MB              ; 00:00:02                           ;
+; Fitter                  ; 00:00:01     ; 1.0                     ; 228 MB              ; 00:00:00                           ;
+; Assembler               ; 00:00:01     ; 1.0                     ; 213 MB              ; 00:00:00                           ;
 ; Classic Timing Analyzer ; 00:00:00     ; 1.0                     ; 187 MB              ; 00:00:00                           ;
-; Total                   ; 00:00:02     ; --                      ; --                  ; 00:00:01                           ;
+; Total                   ; 00:00:04     ; --                      ; --                  ; 00:00:02                           ;
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

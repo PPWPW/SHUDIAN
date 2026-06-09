@@ -1,36 +1,8 @@
 |DigitalClock
-CLK => CLK~0.IN5
+CLK => CLK~0.IN6
 CLK_10K => CLK_10K~0.IN4
-SW_MODE => comb~55.OUTPUTSELECT
-SW_MODE => comb~54.OUTPUTSELECT
-SW_MODE => comb~53.OUTPUTSELECT
-SW_MODE => comb~52.OUTPUTSELECT
-SW_MODE => comb~51.OUTPUTSELECT
-SW_MODE => comb~50.OUTPUTSELECT
-SW_MODE => comb~49.OUTPUTSELECT
-SW_MODE => comb~48.OUTPUTSELECT
-SW_MODE => comb~47.OUTPUTSELECT
-SW_MODE => comb~46.OUTPUTSELECT
-SW_MODE => comb~45.OUTPUTSELECT
-SW_MODE => comb~44.OUTPUTSELECT
-SW_MODE => comb~43.OUTPUTSELECT
-SW_MODE => comb~42.OUTPUTSELECT
-SW_MODE => comb~41.OUTPUTSELECT
-SW_MODE => comb~40.OUTPUTSELECT
-SW_MODE => comb~39.OUTPUTSELECT
-SW_MODE => comb~38.OUTPUTSELECT
-SW_MODE => comb~37.OUTPUTSELECT
-SW_MODE => comb~36.OUTPUTSELECT
-SW_MODE => always3~0.IN0
-SW_MODE => comb~33.OUTPUTSELECT
-SW_MODE => comb~32.OUTPUTSELECT
-SW_MODE => comb~31.OUTPUTSELECT
-SW_MODE => comb~30.OUTPUTSELECT
-SW_RUN => sw_s0~7.OUTPUTSELECT
-SW_RUN => sw_s0~6.OUTPUTSELECT
-SW_RUN => sw_s0~5.OUTPUTSELECT
-SW_RUN => sw_s0~4.OUTPUTSELECT
-SW_RUN => s0_carry.IN1
+SW_MODE => SW_MODE~0.IN1
+SW_RUN => SW_RUN~0.IN1
 MODE_12_24 => MODE_12_24~0.IN1
 ALARM_SW => ALARM_SW~0.IN1
 EN_setalarm => comb~3.IN0
@@ -74,7 +46,7 @@ second_low_d <= BCD_7:u_seg.d
 second_low_e <= BCD_7:u_seg.e
 second_low_f <= BCD_7:u_seg.f
 second_low_g <= BCD_7:u_seg.g
-speaker <= depart:u_depart.speak_out
+speaker <= speaker~0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |DigitalClock|Decoder_2to4:u_dec_set
@@ -346,6 +318,68 @@ clk_high => tone_clk.DATAB
 clk_middle => tone_clk~2.DATAB
 clk_low => tone_clk~2.DATAA
 speak_out <= speak_out_reg.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DigitalClock|chime:u_chime
+M1D => Equal0.IN8
+M1C => Equal0.IN9
+M1B => Equal0.IN10
+M1A => Equal0.IN11
+M0D => Equal0.IN12
+M0C => Equal0.IN13
+M0B => Equal0.IN14
+M0A => Equal0.IN15
+S1D => Equal1.IN8
+S1C => Equal1.IN9
+S1B => Equal1.IN10
+S1A => Equal1.IN11
+S0D => Equal1.IN12
+S0C => Equal1.IN13
+S0B => Equal1.IN14
+S0A => Equal1.IN15
+tone_in => chime_out~1.DATAB
+chime_out <= chime_out~1.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DigitalClock|stopwatch:u_sw
+CLK => sw_s0[3].CLK
+CLK => sw_s0[2].CLK
+CLK => sw_s0[1].CLK
+CLK => sw_s0[0].CLK
+CLK => sw_s1[3].CLK
+CLK => sw_s1[2].CLK
+CLK => sw_s1[1].CLK
+CLK => sw_s1[0].CLK
+CLK => sw_m0[3].CLK
+CLK => sw_m0[2].CLK
+CLK => sw_m0[1].CLK
+CLK => sw_m0[0].CLK
+CLK => sw_m1[3].CLK
+CLK => sw_m1[2].CLK
+CLK => sw_m1[1].CLK
+CLK => sw_m1[0].CLK
+SW_MODE => always0~0.IN0
+SW_RUN => sw_s0~11.OUTPUTSELECT
+SW_RUN => sw_s0~10.OUTPUTSELECT
+SW_RUN => sw_s0~9.OUTPUTSELECT
+SW_RUN => sw_s0~8.OUTPUTSELECT
+SW_RUN => s0_carry.IN1
+s0[0] <= sw_s0[0].DB_MAX_OUTPUT_PORT_TYPE
+s0[1] <= sw_s0[1].DB_MAX_OUTPUT_PORT_TYPE
+s0[2] <= sw_s0[2].DB_MAX_OUTPUT_PORT_TYPE
+s0[3] <= sw_s0[3].DB_MAX_OUTPUT_PORT_TYPE
+s1[0] <= sw_s1[0].DB_MAX_OUTPUT_PORT_TYPE
+s1[1] <= sw_s1[1].DB_MAX_OUTPUT_PORT_TYPE
+s1[2] <= sw_s1[2].DB_MAX_OUTPUT_PORT_TYPE
+s1[3] <= sw_s1[3].DB_MAX_OUTPUT_PORT_TYPE
+m0[0] <= sw_m0[0].DB_MAX_OUTPUT_PORT_TYPE
+m0[1] <= sw_m0[1].DB_MAX_OUTPUT_PORT_TYPE
+m0[2] <= sw_m0[2].DB_MAX_OUTPUT_PORT_TYPE
+m0[3] <= sw_m0[3].DB_MAX_OUTPUT_PORT_TYPE
+m1[0] <= sw_m1[0].DB_MAX_OUTPUT_PORT_TYPE
+m1[1] <= sw_m1[1].DB_MAX_OUTPUT_PORT_TYPE
+m1[2] <= sw_m1[2].DB_MAX_OUTPUT_PORT_TYPE
+m1[3] <= sw_m1[3].DB_MAX_OUTPUT_PORT_TYPE
 
 
 |DigitalClock|hour_convert:u_hconv
