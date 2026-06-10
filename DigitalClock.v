@@ -274,7 +274,6 @@ alarm_storage u_alm_hour (
 // ============================================================
 alarm_judge u_judge (
     .clk        (CLK),
-    .EN1        (1'b1),
     .alarm_sw   (ALARM_SW),
     .MOA        ({M1D, M1C, M1B, M1A}),
     .MOB        ({M0D, M0C, M0B, M0A}),
